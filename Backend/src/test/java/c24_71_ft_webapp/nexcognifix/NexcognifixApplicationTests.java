@@ -1,10 +1,10 @@
-package tech.nocountry.c24_71_ft_webapp;
+package c24_71_ft_webapp.nexcognifix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class C2471FtWebappApplicationTests {
+class NexcognifixApplicationTests {
 
 	@Test
 	void contextLoads() {

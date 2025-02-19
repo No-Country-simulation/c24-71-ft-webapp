@@ -8,11 +8,11 @@
 		<version>3.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>tech.nocountry</groupId>
-	<artifactId>c24-71-ft-webapp</artifactId>
+	<groupId>c24-71-ft-webapp</groupId>
+	<artifactId>nexcognifix</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>c24-71-ft-webapp</name>
-	<description>Nexcognifix</description>
+	<name>nexcognifix</name>
+	<description>No Country</description>
 	<url/>
 	<licenses>
 		<license/>
