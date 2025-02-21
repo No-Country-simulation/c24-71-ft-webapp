@@ -1,13 +1,13 @@
-package tech.nocountry.c24_71_ft_webapp;
+package c24_71_ft_webapp.nexcognifix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class C2471FtWebappApplication {
+public class NexcognifixApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(C2471FtWebappApplication.class, args);
+		SpringApplication.run(NexcognifixApplication.class, args);
 	}
 
 }
