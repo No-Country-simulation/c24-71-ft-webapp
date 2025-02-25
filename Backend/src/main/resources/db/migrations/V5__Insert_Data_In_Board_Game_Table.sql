@@ -1,6 +1,6 @@
 INSERT INTO board_games (id_game, name, description, rules, category, type, status, created_at)
 VALUES (
-    uuid_generate_v4(),
+    '6e09c7a5-881c-4e78-a6b7-3782bdc91899',
     'Camino de Precisión',
     'Un juego interactivo donde el jugador debe guiar un objeto a través de un camino sinuoso sin tocar los bordes, mejorando la coordinación mano-ojo y la motricidad fina.',
     '1. El jugador controla un punto o una pelota en la pantalla con el mouse o el dedo (en dispositivos táctiles).
@@ -18,7 +18,7 @@ VALUES (
 
 INSERT INTO board_games(id_game, name, description, rules, category, type, status, created_at)
 	VALUES (
-	uuid_generate_v4(),
+	'0e25e4d3-8ccf-4b8d-986e-6b7caebdf032',
 	'Juego emparejamiento de fichas',
 	'Un juego diseñado para mejorar la memoria y la atención, donde los jugadores deben encontrar pares de fichas iguales.',
 	'1. Se muestran todas las fichas boca abajo. 2. Los jugadores deben voltear dos fichas por turno. 3. Si las fichas coinciden, se retiran del tablero. 4. Si no coinciden, se vuelven a colocar boca abajo. 5. El juego continúa hasta que todas las fichas sean emparejadas.',
@@ -30,7 +30,7 @@ INSERT INTO board_games(id_game, name, description, rules, category, type, statu
 
 INSERT INTO board_games(id_game, name, description, rules, category, type, status, created_at)
 VALUES (
-    uuid_generate_v4(),
+    '52a63f3f-39a0-460e-92cb-2f43d584de61',
     'Encuentra la Diferencia',
     'Un juego diseñado para mejorar la capacidad de atención y observación, en el cual los jugadores deben encontrar diferencias entre dos imágenes similares.',
     '1. Se presentan dos imágenes similares con pequeñas diferencias.
