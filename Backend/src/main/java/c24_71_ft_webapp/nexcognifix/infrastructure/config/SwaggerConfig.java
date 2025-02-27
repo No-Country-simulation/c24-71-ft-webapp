@@ -20,7 +20,7 @@ public class SwaggerConfig {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")))
                 .info(new Info()
-                        .title("Nexcognifix API")
+                        .title("Nexcognitive API")
                         .version("1.0")
                 );
     }

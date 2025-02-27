@@ -1,6 +1,7 @@
 package c24_71_ft_webapp.nexcognifix.domain.patient;
 
 
+import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -39,9 +40,9 @@ public class Patient {
     @Email(message = "Invalid email format")
     private String email;
 
-//    @ManyToOne
-//    @JoinColumn(name = "professional_id", nullable = false)
-//    private Professional professional;
+    @ManyToOne
+    @JoinColumn(name = "professional_id", nullable = false)
+    private Professional professional;
 
     private String diagnosis;
 
