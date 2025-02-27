@@ -1,6 +1,8 @@
+
 package c24_71_ft_webapp.nexcognifix.domain.patient;
 
 
+import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -12,6 +14,7 @@ import java.util.UUID;
 @Table(name = "patients")
 @Entity(name = "patient")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -39,17 +42,47 @@ public class Patient {
     @Email(message = "Invalid email format")
     private String email;
 
-//    @ManyToOne
-//    @JoinColumn(name = "professional_id", nullable = false)
-//    private Professional professional;
+    @ManyToOne
+    @JoinColumn(name = "professional_id", nullable = false)
+    private Professional professional;
 
     private String diagnosis;
 
-    @Column(nullable = false)
+    @Column(name ="status", nullable = false)
     private Boolean status = true;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    public Patient(Long dni, String name, Integer age, String email, Professional professional, String diagnosis) {
+        this.dni = dni;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.professional = professional;
+        this.diagnosis = diagnosis;
+        this.status = true;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public void disablePatient() {
+        this.status = false;
+    }
+
+    public void updatePatient(String name, Integer age, String email, String diagnosis) {
+        if (name != null && !name.isEmpty()) this.name = name;
+        if (age != null && age >= 0) this.age = age;
+        if (email != null && !email.isEmpty()) this.email = email;
+        if (diagnosis != null) this.diagnosis = diagnosis;
+    }
+
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
 }
