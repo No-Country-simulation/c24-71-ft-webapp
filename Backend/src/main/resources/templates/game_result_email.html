@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Sesión - NexCognitive</title>
+    <style>
+        @media screen and (max-width: 400px) {
+            .game-info { padding-left: 12px !important; }
+            .logo { font-size: 26px !important; }
+            .session-details { padding-left: 8px !important; }
+            .result-button { font-size: 14px !important; padding: 10px 15px !important; }
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #3A4461; padding: 20px !important; margin: 0; text-align: center;">
+<div class="container" style="background: #4E5C81; border-radius: 30px 0px 30px 30px; border: 2px solid #ECE5DD; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); max-width: 500px; margin: 0 auto; color: #ECE5DD;">
+
+    <div class="logo" style="font-size: 28px; font-weight: bold; background: #ECE5DD; color: #3A4461; padding: 25px 10px; border-radius: 27px 0px 30px 30px; border: 2px solid #ECE5DD; text-align: center;">
+        NEXCOGNITIVE
+    </div>
+
+    <h1 style="font-size: 18px; text-align: center; margin: 20px 0;">
+        Resumen de la Sesión de <span style="font-weight: bold; color: white;">{PATIENT_NAME}</span>
+    </h1>
+
+    <p class="subtitle" style="text-align: center; margin: 20px; font-size: 16px; line-height: 1.2;">
+        La sesión de juego ha concluido. A continuación, se presentan los resultados registrados.
+    </p>
+
+    <div class="game-info" style="background: white; color: #333; margin: 30px 18px 25px 18px; padding: 18px; border-radius: 12px; font-size: 13px; text-align: left;">
+        <div class="game-title" style="font-size: 15px; font-weight: bold; color: #4E5C81; margin-bottom: 5px;">
+            {GAME_NAME}
+        </div>
+
+        <p style="line-height: 1.2; font-size: 14px;">
+            {GAME_DESCRIPTION}
+        </p>
+
+        <div class="session-details" style="margin-top: 10px; padding: 0 10px;">
+            <h3 style="font-size: 14px; color: #4E5C81;">Detalles de la sesión:</h3>
+            <table style="width: 100%; border-collapse: collapse; color: #333; font-size: 13px;">
+                <tr>
+                    <td style="padding: 6px; font-weight: bold; border-bottom: 1px solid #ddd;">Intentos estimados:</td>
+                    <td style="padding: 6px; text-align: right; border-bottom: 1px solid #ddd;">{ESTIMATED_ATTEMPTS}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px; font-weight: bold; border-bottom: 1px solid #ddd;">Intentos realizados:</td>
+                    <td style="padding: 6px; text-align: right; border-bottom: 1px solid #ddd;">{ATTEMPTS_MADE}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px; font-weight: bold; border-bottom: 1px solid #ddd;">Tiempo estimado:</td>
+                    <td style="padding: 6px; text-align: right; border-bottom: 1px solid #ddd;">{ESTIMATED_TIME}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px; font-weight: bold; border-bottom: 1px solid #ddd;">Tiempo jugado:</td>
+                    <td style="padding: 6px; text-align: right; border-bottom: 1px solid #ddd;">{TIME_PLAYED}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px; font-weight: bold;">Estado final:</td>
+                    <td style="padding: 6px; text-align: right;">{STATUS}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="observation" style="margin-top: 10px; padding-left: 10px;">
+            <h3 style="font-size: 14px; color: #4E5C81;">Observaciones:</h3>
+            <p style="line-height: 1.2; font-size: 14px;">
+                {OBSERVATION}
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="{RESULTS_URL}" class="result-button"
+           style="display: inline-block; background: #4E5C81; color: #ECE5DD !important; padding: 14px 18px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; border: 2px solid #ECE5DD;">
+            Ver Resultados
+        </a>
+    </div>
+
+    <p class="footer" style="font-size: 12px; margin: 25px 10px 20px 10px; text-align: center;">
+        Para más detalles sobre los resultados, accede a la plataforma.
+    </p>
+</div>
+</body>
+</html>
