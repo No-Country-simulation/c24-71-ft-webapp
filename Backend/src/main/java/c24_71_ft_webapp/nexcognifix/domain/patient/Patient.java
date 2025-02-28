@@ -12,7 +12,7 @@ import java.util.UUID;
 
 
 @Table(name = "patients")
-@Entity(name = "patient")
+@Entity(name = "Patient")
 @Getter
 @Setter
 @NoArgsConstructor
