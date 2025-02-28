@@ -5,6 +5,7 @@ import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameDTO;
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameFiltersDTO;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.GameSessionDTO;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.GameSessionRequestDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -26,6 +27,7 @@ public class BoardGameController {
     private final BoardGameService boardGameService;
 
     @GetMapping
+    @Operation(summary = "Obtener lista de juegos", description = "Devuelve una lista de juegos filtrada por categoría y/o tipo si se proporcionan parámetros.")
     public ResponseEntity<List<BoardGameDTO>> getBoardGames(
             @RequestParam(required = false) String category,
             @RequestParam(required = false) String type) {
@@ -35,6 +37,7 @@ public class BoardGameController {
     }
 
     @GetMapping("/filters")
+    @Operation(summary = "Obtener filtros de juegos", description = "Recupera las categorías y tipos disponibles de juegos.")
     public ResponseEntity<BoardGameFiltersDTO> getGameCategoriesAndTypes() {
         return ResponseEntity.ok(boardGameService.getGameCategoriesAndTypes());
     }
