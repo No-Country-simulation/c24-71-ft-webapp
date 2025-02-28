@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión de Juego Creada - NexCognitive</title>
+    <style>
+        @media screen and (max-width: 400px) {
+            .game-info { padding-left: 12px !important; }
+            .logo { font-size: 26px !important; }
+            .rules { padding-left: 8px !important;}
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #3A4461; padding: 20px !important; margin: 0; text-align: center;">
+<div class="container" style="background: #4E5C81; border-radius: 30px 0px 30px 30px; border: 2px solid #ECE5DD; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); max-width: 500px; margin: 0 auto; color: #ECE5DD;">
+
+    <div class="logo" style="font-size: 28px; font-weight: bold; background: #ECE5DD; color: #3A4461; padding: 25px 10px; border-radius: 27px 0px 30px 30px; border: 2px solid #ECE5DD; text-align: center;">
+        NEXCOGNITIVE
+    </div>
+
+    <h1 style="font-size: 18px; text-align: center; margin: 20px 0;">
+        ¡Hola, <span class="highlight" style="font-weight: bold; color: white;">{PATIENT_NAME}</span>!
+    </h1>
+
+    <p class="subtitle" style="font-size: 16px; text-align: center; margin: 20px; line-height: 1.2;">
+        <span class="highlight" style="font-weight: bold; color: white;">{PROFESSIONAL_NAME}</span> ha creado una sesión de juego para ti en <strong>NexCognitive</strong>.
+    </p>
+
+    <div class="game-info" style="background: white; color: #333; margin: 30px 18px 45px 18px; padding: 18px; border-radius: 12px; font-size: 13px; text-align: left;">
+        <div class="game-title" style="font-size: 15px; font-weight: bold; color: #4E5C81; margin-bottom: 5px;">
+            {GAME_NAME}
+        </div>
+        <p style="line-height: 1.2;">{GAME_DESCRIPTION}</p>
+
+        <div class="rules" style="margin-top: 10px; padding-left: 10px;">
+            <h3 style="font-size: 14px; color: #4E5C81;">Reglas del juego:</h3>
+            {GAME_RULES}
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{GAME_SESSION_URL}" class="button"
+           style="display: inline-block; background: #4E5C81; color: #ECE5DD !important; padding: 14px 18px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; border: 2px solid #ECE5DD;">
+            Acceder a la Sesión
+        </a>
+    </div>
+
+    <p class="footer" style="font-size: 12px; margin: 35px 10px 20px 10px; text-align: center;">
+        Si tienes dudas, por favor contacta con tu especialista.
+    </p>
+</div>
+</body>
+</html>
