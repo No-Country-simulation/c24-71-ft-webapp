@@ -34,9 +34,9 @@ public class SecurityConfigurations {
 
     public static final List<PublicEndpoint> PUBLIC_ENDPOINTS = List.of(
             new PublicEndpoint("/api/login", HttpMethod.POST),
-            new PublicEndpoint("/api/game-sessions/{sessionId}", HttpMethod.PATCH),
+            new PublicEndpoint("/api/game-sessions/{sessionId}", HttpMethod.GET),
             new PublicEndpoint("/api/game-sessions/{sessionId}/start", HttpMethod.PATCH),
-            new PublicEndpoint("/api/game-sessions/{sessionId}/cancel", HttpMethod.GET),
+            new PublicEndpoint("/api/game-sessions/{sessionId}/cancel", HttpMethod.PATCH),
             new PublicEndpoint("/api/game-sessions/{sessionId}/results", HttpMethod.POST),
             new PublicEndpoint("/api/docs", HttpMethod.GET),
             new PublicEndpoint("/api/docs/swagger-config", HttpMethod.GET),
