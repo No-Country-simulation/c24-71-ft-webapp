@@ -1,6 +1,7 @@
 package c24_71_ft_webapp.nexcognifix.infrastructure.security;
 
 import c24_71_ft_webapp.nexcognifix.domain.professional.ProfessionalRepository;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,28 +29,35 @@ public class SecurityFilter extends OncePerRequestFilter {
         var authHeader = request.getHeader("Authorization");
         System.out.println("Auth Header: " + authHeader);
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            var token = authHeader.replace("Bearer ", "");
-            var subject = tokenService.getSubject(token);
-            System.out.println("Token Subject: " + subject);
+        try {
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                var token = authHeader.replace("Bearer ", "");
+                var subject = tokenService.getSubject(token);
+                System.out.println("Token Subject: " + subject);
 
-            if (subject != null) {
-                var professional = professionalRepository.findByEmail(subject);
-                if (professional != null) {
-                    System.out.println("Usuario autenticado: " + professional.getEmail());
-                    var authentication = new UsernamePasswordAuthenticationToken(
-                            professional, null, professional.getAuthorities());
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                if (subject != null) {
+                    var professional = professionalRepository.findByEmail(subject);
+                    if (professional != null) {
+                        System.out.println("Usuario autenticado: " + professional.getEmail());
+                        var authentication = new UsernamePasswordAuthenticationToken(
+                                professional, null, professional.getAuthorities());
+                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                    } else {
+                        System.out.println("Profesional no encontrado en la DB");
+                    }
                 } else {
-                    System.out.println("Profesional no encontrado en la DB");
+                    System.out.println("El token es inválido o expirado");
                 }
             } else {
-                System.out.println("El token es inválido o expirado");
+                System.out.println("No se recibió token en el header o formato incorrecto");
             }
-        } else {
-            System.out.println("No se recibió token en el header o formato incorrecto");
+        } catch (JWTVerificationException e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType("application/json; charset=UTF-8");
+            String jsonErrorResponse = "{\"error\": \"Token inválido o expirado. Autenticación fallida.\"}";
+            response.getWriter().write(jsonErrorResponse);
+            return;
         }
-
         filterChain.doFilter(request, response);
     }
 
