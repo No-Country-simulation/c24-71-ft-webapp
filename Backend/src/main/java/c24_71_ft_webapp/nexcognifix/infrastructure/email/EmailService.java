@@ -11,10 +11,16 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -94,11 +100,15 @@ public class EmailService {
 
     // Carga un archivo de plantilla desde el sistema de archivos.
     private String loadTemplate(String fileName) {
-        try {
-            String filePath = "src/main/resources/templates/" + fileName;
-            return new String(Files.readAllBytes(Paths.get(filePath)));
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("templates/" + fileName)) {
+            if (inputStream == null) {
+                throw new RuntimeException("No se pudo encontrar la plantilla de correo: " + fileName);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                return reader.lines().collect(Collectors.joining("\n"));
+            }
         } catch (IOException e) {
-            throw new RuntimeException("No se pudo cargar la plantilla de correo: " + fileName, e);
+            throw new RuntimeException("Error al cargar la plantilla de correo: " + fileName, e);
         }
     }
 
