@@ -2,8 +2,10 @@ package c24_71_ft_webapp.nexcognifix.domain.gamesession;
 
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.BoardGame;
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.BoardGameRepository;
-import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.GameSessionDTO;
-import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.GameSessionRequestDTO;
+import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameDTO;
+import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameSummaryDTO;
+import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.*;
+import c24_71_ft_webapp.nexcognifix.domain.gamesession.enums.GameStatus;
 import c24_71_ft_webapp.nexcognifix.domain.patient.Patient;
 import c24_71_ft_webapp.nexcognifix.domain.patient.PatientRepository;
 import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
@@ -51,6 +53,49 @@ public class GameSessionService {
         emailService.sendGameSessionEmail(gameSession);
         return toGameSessionDTO(gameSession);
     }
+    @Transactional(readOnly = true)
+    public GameSessionDetailsDTO getGameSessionById(UUID sessionId) {
+        GameSession session = findSessionById(sessionId);
+        return toGameSessionDetailsDTO(session);
+    }
+
+    @Transactional
+    public GameSessionDTO startGameSession(UUID sessionId) {
+        GameSession session = findSessionById(sessionId);
+        if (session.getStatus() != GameStatus.PENDING) {
+            throw new AppException("La sesión ya no está en estado pendiente.", "CONFLICT");
+        }
+        session.startSession();
+        gameSessionRepository.save(session);
+        return toGameSessionDTO(session);
+    }
+
+    @Transactional
+    public GameSessionCancelDTO cancelGameSession(UUID sessionId, GameSessionCancelInputDTO observation) {
+        GameSession session = findSessionById(sessionId);
+        if (session.getStatus() == GameStatus.COMPLETED) {
+            throw new AppException("No se puede cancelar una sesión completada.", "BAD_REQUEST");
+        }
+        var previousStatus = session.getStatus();
+        session.cancelSession(observation.observation());
+        gameSessionRepository.save(session);
+        emailService.sendGameResultEmail(session);
+        return new GameSessionCancelDTO(session.getIdSession(), session.getPatient().getName(),session.getBoardGame().getName(), previousStatus, session.getStatus(), observation.observation());
+    }
+
+    @Transactional
+    public GameSessionResultDTO submitGameResults(UUID sessionId, GameSessionResultInputDTO resultDTO) {
+        GameSession session = findSessionById(sessionId);
+        if (session.getStatus() != GameStatus.IN_PROGRESS) {
+            throw new AppException("La sesión de juego no está en progreso.", "CONFLICT");
+        }
+        session.completeSession();
+        session.setAttemptsMade(resultDTO.attemptsMade());
+        session.setTimePlayed(resultDTO.timePlayed());
+        gameSessionRepository.save(session);
+        emailService.sendGameResultEmail(session);
+        return new GameSessionResultDTO(sessionId, session.getPatient().getName(), session.getBoardGame().getName(), session.getEstimatedAttempts(), session.getGameChips(), session.getEstimatedTime(), session.getStatus(), session.getAttemptsMade(), session.getTimePlayed());
+    }
 
     private Patient findPatientById(UUID patientId) {
         return patientRepository.findById(patientId)
@@ -88,6 +133,30 @@ public class GameSessionService {
         );
     }
 
+    private GameSessionDetailsDTO toGameSessionDetailsDTO(GameSession gameSession) {
+        var boardGame = gameSession.getBoardGame();
+
+        var game = new BoardGameSummaryDTO(
+                boardGame.getIdGame(),
+                boardGame.getName(),
+                boardGame.getDescription(),
+                boardGame.getRules(),
+                boardGame.getCategory(),
+                boardGame.getType()
+        );
+
+        return new GameSessionDetailsDTO(
+                gameSession.getIdSession(),
+                gameSession.getPatient().getName(),
+                game,
+                gameSession.getEstimatedAttempts(),
+                gameSession.getGameChips(),
+                gameSession.getEstimatedTime(),
+                gameSession.getStatus()
+        );
+    }
+
+
     // TODO: Esta función debería trasladarse a un servicio común o helper,
     // ya que se usa en diferentes servicios. Se encuentra aquí provisionalmente.
     public Professional getAuthenticatedUser() {
@@ -99,5 +168,4 @@ public class GameSessionService {
 
         throw new AppException("El usuario autenticado no es válido.", "FORBIDDEN");
     }
-
 }
