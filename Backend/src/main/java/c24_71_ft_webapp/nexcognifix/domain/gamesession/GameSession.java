@@ -104,11 +104,12 @@ public class GameSession {
     }
 
     // Cancela la sesión de juego, estableciendo el estado en CANCELED.
-    public void cancelSession() {
+    public void cancelSession(String observation) {
         if (this.status == GameStatus.COMPLETED) {
             throw new AppException("No puedes cancelar una sesión que ya ha finalizado.", "BAD_REQUEST");
         }
         this.status = GameStatus.CANCELED;
+        this.observation = observation;
     }
 
     @PrePersist
