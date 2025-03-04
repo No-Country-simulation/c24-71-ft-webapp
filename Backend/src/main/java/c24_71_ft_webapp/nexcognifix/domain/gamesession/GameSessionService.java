@@ -63,7 +63,7 @@ public class GameSessionService {
     public GameSessionDTO startGameSession(UUID sessionId) {
         GameSession session = findSessionById(sessionId);
         if (session.getStatus() != GameStatus.PENDING) {
-            throw new AppException("La sesión ya no está en estado pendiente.", "CONFLICT");
+            throw new AppException("La sesión ya no esta disponible.", "CONFLICT");
         }
         session.startSession();
         gameSessionRepository.save(session);
