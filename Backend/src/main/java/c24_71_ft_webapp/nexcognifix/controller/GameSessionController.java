@@ -45,21 +45,21 @@ public class GameSessionController {
     }
 
     @Operation(summary = "Iniciar una sesión de juego", description = "Cambia el estado de la sesión de juego a 'En progreso'.")
-    @PatchMapping("/{sessionId}/start")
+    @PatchMapping("/patient/join/{sessionId}/start")
     public ResponseEntity<GameSessionDTO> startGameSession(@PathVariable UUID sessionId) {
         var gameSession = gameSessionService.startGameSession(sessionId);
         return ResponseEntity.ok(gameSession);
     }
 
     @Operation(summary = "Cancelar sesión de juego", description = "Cambia el estado de la sesión de juego a 'Cancelada'.")
-    @PatchMapping("/{sessionId}/cancel")
+    @PatchMapping("/patient/join/{sessionId}/cancel")
     public ResponseEntity<GameSessionCancelDTO> cancelGameSession(@PathVariable UUID sessionId, @RequestBody @Valid GameSessionCancelInputDTO observation) {
         var gameCancelDto = gameSessionService.cancelGameSession(sessionId, observation);
         return ResponseEntity.ok(gameCancelDto);
     }
 
     @Operation(summary = "Enviar resultados de la partida", description = "Guarda los resultados de la sesión de juego en la base de datos y los envía al profesional correspondiente.")
-    @PostMapping("/{sessionId}/results")
+    @PostMapping("/patient/join/{sessionId}/results")
     public ResponseEntity<GameSessionResultDTO> submitGameResults(@PathVariable UUID sessionId, @RequestBody @Valid GameSessionResultInputDTO resultDTO) {
         var gameResultDto = gameSessionService.submitGameResults(sessionId, resultDTO);
         return ResponseEntity.ok(gameResultDto);
