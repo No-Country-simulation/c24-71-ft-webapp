@@ -2,6 +2,7 @@ package c24_71_ft_webapp.nexcognifix.controller;
 
 import c24_71_ft_webapp.nexcognifix.domain.professional.DataLoginProfessional;
 import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
+import c24_71_ft_webapp.nexcognifix.domain.professional.ProfessionalService;
 import c24_71_ft_webapp.nexcognifix.infrastructure.security.DataJWTToken;
 import c24_71_ft_webapp.nexcognifix.infrastructure.security.TokenService;
 import jakarta.annotation.PostConstruct;
@@ -23,31 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
+    @Autowired
+    private ProfessionalService professionalService;
 
     @Autowired
-        private TokenService tokenService;
+    private TokenService tokenService;
 
-        @Autowired
-        private AuthenticationManager authenticationManager;
-
-    @PostConstruct
-    public void init() {
-        System.out.println("🚀 LoginController cargado correctamente");
-    }
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @PostMapping
     public ResponseEntity<DataJWTToken> autenticateProfessional(@RequestBody @Valid DataLoginProfessional dataLoginProfessional) {
-        logger.info("Intentando autenticar al usuario: {}", dataLoginProfessional.email());
-
-        Authentication authToken = new UsernamePasswordAuthenticationToken(
-                dataLoginProfessional.email(), dataLoginProfessional.password());
-
-        var professionalAuthenticated = authenticationManager.authenticate(authToken);
-
-        var JWTToken = tokenService.generateToken((Professional) professionalAuthenticated.getPrincipal());
-        System.out.println("Autenticación exitosa para: " + dataLoginProfessional.email());
-            return ResponseEntity.ok(new DataJWTToken(JWTToken));
+        DataJWTToken DJT = professionalService.validarLogin(dataLoginProfessional);
+        return ResponseEntity.ok(DJT);
     }
 }
