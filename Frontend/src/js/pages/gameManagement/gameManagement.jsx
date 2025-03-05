@@ -7,6 +7,7 @@ import Modal from "../../component/Modal";
 const GameManagement = () => {
   const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("")
 
   const games = [
     {
@@ -94,6 +95,7 @@ const GameManagement = () => {
         </div>
       </div>
 
+        {/* Modal starts here */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="text-center h-144 w-144">
           <h1>MEMOTEST</h1>
