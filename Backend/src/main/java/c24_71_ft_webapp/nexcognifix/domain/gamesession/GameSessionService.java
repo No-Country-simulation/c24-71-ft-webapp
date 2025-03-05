@@ -2,7 +2,6 @@ package c24_71_ft_webapp.nexcognifix.domain.gamesession;
 
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.BoardGame;
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.BoardGameRepository;
-import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameDTO;
 import c24_71_ft_webapp.nexcognifix.domain.boardgame.dto.BoardGameSummaryDTO;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.*;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.enums.GameStatus;
@@ -12,6 +11,8 @@ import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
 import c24_71_ft_webapp.nexcognifix.infrastructure.email.EmailService;
 import c24_71_ft_webapp.nexcognifix.infrastructure.exception.AppException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -167,5 +168,16 @@ public class GameSessionService {
         }
 
         throw new AppException("El usuario autenticado no es válido.", "FORBIDDEN");
+    }
+
+    public Page<GameSessionDTO> getAllGameSessionsByPatient(UUID patientId, Pageable pageable) {
+        var patient = findPatientById(patientId);
+        Professional professional = getAuthenticatedUser();
+        validatePatientBelongsToProfessional(patient, professional);
+
+        Page<GameSession> gamesByPatient =  gameSessionRepository.findAllByPatient_IdPatient(patientId, pageable);
+
+        return gamesByPatient.map(this::toGameSessionDTO);
+
     }
 }
