@@ -15,7 +15,7 @@ public record RecentResultsDTO(
         this(
             gameSession.getPatient().getName(),
             gameSession.getBoardGame().getName(),
-            gameSession.getStatus(),
+			gameSession.getStatus(),
             gameSession.getCreatedAt()
         );
     }

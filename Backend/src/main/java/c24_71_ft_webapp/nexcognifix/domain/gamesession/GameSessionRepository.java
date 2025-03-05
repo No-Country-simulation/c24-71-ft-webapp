@@ -12,4 +12,30 @@ public interface GameSessionRepository extends JpaRepository<GameSession, UUID> 
 
     @Query("SELECT g FROM GameSession g ORDER BY createdAt DESC LIMIT 10")
     List<RecentResultsDTO> findLastTenResults();
+
+    @Query("""
+        SELECT COUNT(gs) 
+        FROM GameSession gs 
+        WHERE gs.status = 'PENDING' 
+        AND MONTH(gs.createdAt) = MONTH(CURRENT_DATE) 
+        AND YEAR(gs.createdAt) = YEAR(CURRENT_DATE)
+        """)
+    Integer countPendingSessionsThisMonth();
+
+    @Query("""
+        SELECT COUNT(gs) 
+        FROM GameSession gs 
+        WHERE gs.status = 'COMPLETED' 
+        AND MONTH(gs.createdAt) = MONTH(CURRENT_DATE) 
+        AND YEAR(gs.createdAt) = YEAR(CURRENT_DATE)
+        """)
+    Integer countCompletedSessionsThisMonth();
+
+    @Query("""
+        SELECT COUNT(gs) 
+        FROM GameSession gs 
+        WHERE MONTH(gs.createdAt) = MONTH(CURRENT_DATE) 
+        AND YEAR(gs.createdAt) = YEAR(CURRENT_DATE)
+        """)
+    Integer countCreatedSessionsThisMonth();
 }

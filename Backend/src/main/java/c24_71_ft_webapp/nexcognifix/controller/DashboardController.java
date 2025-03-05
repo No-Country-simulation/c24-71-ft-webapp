@@ -2,7 +2,10 @@ package c24_71_ft_webapp.nexcognifix.controller;
 
 import c24_71_ft_webapp.nexcognifix.domain.dashboard.DashboardService;
 import c24_71_ft_webapp.nexcognifix.domain.dashboard.dto.RecentResultsDTO;
+import c24_71_ft_webapp.nexcognifix.domain.dashboard.dto.StatisticsDTO;
+import c24_71_ft_webapp.nexcognifix.domain.gamesession.GameSessionRepository;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.GameSessionResultDTO;
+import c24_71_ft_webapp.nexcognifix.domain.patient.PatientRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -28,6 +33,12 @@ public class DashboardController {
     @Autowired
     private DashboardService dashboardService;
 
+    @Autowired
+    private GameSessionRepository gameSessionRepository;
+
+    @Autowired
+    private PatientRepository patientRepository;
+
     @Operation(summary = "Listar las 10 últimas sesiones de juego del profesional autenticado", description = "Obtiene las últimas sesiones de juego creadas por el profesional autenticado.")
     @GetMapping("/latestgames")
     public ResponseEntity<List<RecentResultsDTO>> getLatestGameSessionsByAuthenticatedProfessional() {
@@ -38,13 +49,12 @@ public class DashboardController {
 
     //total de sesiones de juegos pendientes mensuales
     //total de sesiones de Juegos finalizados mensuales
-    //total de sesiones mensuales porcetaje mensuales
+    //total de sesiones mensuales
     //numero total de pacientes activos mensuales
     @Operation(summary = "ver estadisticos totales", description = "Obtiene las últimas sesiones de juego creadas por el profesional autenticado.")
     @GetMapping("/statistics")
-    public ResponseEntity<Void> getStatistics() {
-        // TODO: Implementar la obtención de los totales
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+    public ResponseEntity<StatisticsDTO> getStatistics() {
+        return ResponseEntity.ok(dashboardService.getMonthlyStatistics());
     }
 
 
