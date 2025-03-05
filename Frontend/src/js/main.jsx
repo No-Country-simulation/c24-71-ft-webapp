@@ -1,10 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+
 import '../styles/index.css'
-import GameManagement from './pages/gameManagement/GameManagement.jsx'
+import { App } from './app'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <GameManagement/>
+    <BrowserRouter>
+      <App></App>
+    </BrowserRouter>    
   </StrictMode>,
 )
