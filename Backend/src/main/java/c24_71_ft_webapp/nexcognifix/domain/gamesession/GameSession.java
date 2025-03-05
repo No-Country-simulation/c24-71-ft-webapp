@@ -16,7 +16,7 @@ import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "GameSession")
 @Table(name = "game_sessions")
 @Data
 @AllArgsConstructor
