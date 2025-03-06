@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '../styles/index.css'
-import GameManagement from './pages/gameManagement/GameManagement.jsx'
+import PatientManagement from './pages/patientManagement/PatientManagement.jsx';
+import GameManagement from './pages/gameManagement/gameManagement.jsx';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <GameManagement/>
-  </StrictMode>,
+    <PatientManagement />
+    {/* <GameManagement /> */}
+  </StrictMode>
 )
