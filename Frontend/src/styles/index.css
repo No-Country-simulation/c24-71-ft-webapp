@@ -14,3 +14,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@theme {
+  --animate-correct-card: correct-glow 0.5s forwards;
+  --animate-incorrect-card: incorrect-cards 0.5s;
+}
+
+@keyframes correct-glow {
+  0% { transform: scale(1) rotateX(180deg); box-shadow: 0 0 25px #ABDC6A; }
+  50% { transform: scale(1.1) rotateX(180deg); box-shadow: 0 0 15px #ABDC6A; }
+  100% { transform: scale(1) rotateX(180deg); box-shadow: 0 0 25px #ABDC6A;}
+}
+
+
+@keyframes incorrect-cards {
+  10%, 90% { transform: translateX(-0.5px) rotateX(180deg); box-shadow: 0 0 5px gray;}
+  20%, 80% { transform: translateX(1px) rotateX(180deg); box-shadow: 0 0 15px gray;}
+  30%, 50%, 70% { transform: translateX(-2px) rotateX(180deg); box-shadow: 0 0 5px gray;}
+  40%, 60% { transform: translateX(2px) rotateX(180deg); box-shadow: 0 0 5px gray;}
+}
