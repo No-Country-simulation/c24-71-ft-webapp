@@ -31,20 +31,11 @@
 
 .login {
   perspective: 800px;
-  width: 500px;
+  width: 355px;
   height: 499px;
   border-radius: 10px;
   margin: 103px;
   margin-right: 70px;
   margin-left: 20px;
-  /* background-color: #4E5C82; */
-
-}
-
-.botonlogin {
-
-    
-  color: #ffffff;
-  background: #000000;
 
 }

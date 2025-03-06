@@ -7,9 +7,7 @@ const LayoutAuth = () => {
    
     <div className="flex flex-row">
         <div className="basis-1/3 h-screen bg-[#3F4B6E]">
-        <div className="auth-layout text-center" >
-            <h1>NEXCOGNITIVE</h1>           
-            <hr />
+        <div className="auth-layout text-center" >        
 
             <Outlet />
 
