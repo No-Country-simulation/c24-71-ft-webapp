@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "../../../styles/App.css";
-import NavBar from "../../component/NavBar";
-import SideBar from "../../component/SideBar";
 import Modal from "../../component/Modal";
 
 const GameManagement = () => {
@@ -35,10 +33,8 @@ const GameManagement = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="flex gap-x-10">
-        <SideBar />
-        <div className="text-black my-10 mx-auto grid gap-12 space-y-10 md:space-y-0 sm:gap-16 lg:grid-cols-3 w-full">
+    
+        <div className="text-black p-5 my-10 mx-auto grid gap-6 space-y-10 md:space-y-0 sm:gap-6 lg:grid-cols-3 w-full">
           {/*Grid. Game menu will go here*/}
           {games.map((game) => (
             <div
@@ -93,35 +89,34 @@ const GameManagement = () => {
             </button>
           </div> */}
         </div>
-      </div>
+      
 
         {/* Modal starts here */}
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div className="text-center h-144 w-144">
+        <div className="bg-[#4E5C82] text-center h-144 w-144">
           <h1>MEMOTEST</h1>
           <div className="grid gap-6 mb-6 md:grid-cols-2 mx-auto my-8 w-auto">
             <div>
-              <label htmlFor="first_name" className= "block mb-2 text-sm font-medium text-gray-900 dark:text-black">Pacientes</label>
-              <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required></input>
+              <label htmlFor="first_name" className= "block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pacientes</label>
+              <input type="text" id="first_name" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="Juan Herrera" required></input>
             </div>
             <div>
-              <label>Tiempo estimado</label>
-              <input type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="30 segundos" required></input>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo estimado</label>
+              <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="30 segundos" required></input>
+            </div>
+            <div>                                                            
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Fichas</label>
+              <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="10" required></input>
             </div>
             <div>
-              <label>Numero de Fichas</label>
-              <input type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="10" required></input>
-            </div>
-            <div>
-              <label>Intentos estimados</label>
-              <input type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5" required></input>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Intentos estimados</label>
+              <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="5" required></input>
             </div>
           </div>
 
           <div className="flex gap-4 text-black">
-            {/* <button className="bg-blue-500 hover:bg-blue-700 rounded w-full">Delete</button> */}
             <button
-              className="bg-blue-500 hover:bg-blue-700 rounded w-full"
+              className="bg-blue-500 hover:bg-blue-700 rounded w-full p-4"
               onClick={() => setOpen(false)}
             >
               Asignar

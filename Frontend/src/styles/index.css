@@ -37,6 +37,14 @@
   margin: 103px;
   margin-right: 70px;
   margin-left: 20px;
-  background-color: #4E5C82;
+  /* background-color: #4E5C82; */
+
+}
+
+.botonlogin {
+
+    
+  color: #ffffff;
+  background: #000000;
 
 }

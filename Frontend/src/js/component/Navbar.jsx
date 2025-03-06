@@ -5,8 +5,13 @@ import { SlArrowDown } from "react-icons/sl";
 import { MdHome } from "react-icons/md";
 import { MdGroups } from "react-icons/md";
 import { BiSolidCastle } from "react-icons/bi";
+import { useAuth } from '../context/AuthContext';
 
 const NavBar = () => {
+
+    const { logout } = useAuth();
+
+
   return (
     <div className='nav-bar'>
       <div className='up-bar bg-[#ECE5DE] flex justify-between h-[88px] max-w-[2500px] mx-auto items-center px-14'>
@@ -19,6 +24,7 @@ const NavBar = () => {
             <BsPersonCircle color='#2D3147' size={22} />
             <p className='text-[#2D3147] font-semibold text-[20px]'>Soledad</p>
             <SlArrowDown color='#2D3147' size={14} />
+            <button onClick={logout} className='text-[#2D3147] font-semibold text-[20px]'>salir</button>
           </div>
         </div>
       </div>
