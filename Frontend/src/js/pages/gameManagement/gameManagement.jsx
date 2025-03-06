@@ -97,19 +97,19 @@ const GameManagement = () => {
           <h1>MEMOTEST</h1>
           <div className="grid gap-6 mb-6 md:grid-cols-2 mx-auto my-8 w-auto">
             <div>
-              <label htmlFor="first_name" className= "block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pacientes</label>
+              <label htmlFor="first_name" className= "block mb-2 text-sm font-medium text-gray-900 text-white">Pacientes</label>
               <input type="text" id="first_name" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="Juan Herrera" required></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo estimado</label>
+              <label className="block mb-2 text-sm font-medium text-gray-900 text-white">Tiempo estimado</label>
               <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="30 segundos" required></input>
             </div>
             <div>                                                            
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Fichas</label>
+              <label className="block mb-2 text-sm font-medium text-gray-900 text-white">Numero de Fichas</label>
               <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="10" required></input>
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Intentos estimados</label>
+              <label className="block mb-2 text-sm font-medium text-gray-900 text-white">Intentos estimados</label>
               <input type="number" className="text-sm rounded-lg w-full p-2.5 bg-white text-black" placeholder="5" required></input>
             </div>
           </div>
