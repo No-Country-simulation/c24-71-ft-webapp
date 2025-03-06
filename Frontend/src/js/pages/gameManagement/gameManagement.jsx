@@ -74,7 +74,7 @@ const GameManagement = () => {
                 </h1>
                 <div className="flex justify-center">
                   <button
-                    className="my-2 bg-yellow-800 hover:bg-yellow-700 text-white font-bold py-2 px-4 w-auto rounded-full inline-flex items-center"
+                    className="my-2 bg-[#4E5C82] hover:bg-red-700 text-white font-bold py-2 px-4 w-auto rounded-full inline-flex items-center"
                     onClick={() => setOpen(true)}
                   >
                     <span>Asignar juego</span>
@@ -93,7 +93,7 @@ const GameManagement = () => {
 
         {/* Modal starts here */}
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div className="bg-[#4E5C82] text-center h-144 w-144">
+        <div className="bg-[#4E5C82] text-center h-144 w-144 text-white">
           <h1>MEMOTEST</h1>
           <div className="grid gap-6 mb-6 md:grid-cols-2 mx-auto my-8 w-auto">
             <div>
@@ -114,9 +114,9 @@ const GameManagement = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 text-black">
+          <div className="flex gap-4 text-white">
             <button
-              className="bg-blue-500 hover:bg-blue-700 rounded w-full p-4"
+              className="border-2 border-white bg-#4E5C82 hover:bg-blue-700 rounded-xl w-full p-4"
               onClick={() => setOpen(false)}
             >
               Asignar
