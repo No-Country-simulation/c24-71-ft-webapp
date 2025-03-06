@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "../../../styles/App.css";
-import NavBar from "../../component/NavBar";
-import SideBar from "../../component/SideBar";
 import Modal from "../../component/Modal";
 
 const GameManagement = () => {
@@ -34,10 +32,8 @@ const GameManagement = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="flex gap-x-10">
-        <SideBar />
-        <div className="text-black my-10 mx-auto grid gap-12 space-y-10 md:space-y-0 sm:gap-16 lg:grid-cols-3 w-full">
+    
+        <div className="text-black p-5 my-10 mx-auto grid gap-6 space-y-10 md:space-y-0 sm:gap-6 lg:grid-cols-3 w-full">
           {/*Grid. Game menu will go here*/}
           {games.map((game) => (
             <div
@@ -92,7 +88,7 @@ const GameManagement = () => {
             </button>
           </div> */}
         </div>
-      </div>
+      
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="text-center h-144 w-144">
