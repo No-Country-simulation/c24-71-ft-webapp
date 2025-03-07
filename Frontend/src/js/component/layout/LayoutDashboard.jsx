@@ -13,9 +13,9 @@ const LayoutDashboard = () => {
         <>
          
             <NavBar />    
-            <div class="flex flex-row  text-black  max-w-[2500px] mx-auto">
-                <div class="basis-[20vw]"><SideBar /></div>
-                <div class="basis-[80vw]"><Outlet /></div>
+            <div className="flex flex-row  text-black  max-w-[2500px] mx-auto">
+                <div className="basis-[20vw]"><SideBar /></div>
+                <div className="basis-[80vw]"><Outlet /></div>
             </div>
         </>
 

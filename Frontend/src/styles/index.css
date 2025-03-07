@@ -15,6 +15,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form {
+  @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
+  perspective: 800px;
+  width: 500px;
+  height: 499px;
+  border-radius: 10px;
+  margin: 97px;
+  margin-right: 70px;
+  margin-left: 20px;
+  background-color: #000000;
+
+}
+
+.login {
+  perspective: 800px;
+  width: 355px;
+  height: 499px;
+  border-radius: 10px;
+  margin: 103px;
+  margin-right: 70px;
+  margin-left: 20px;
+
+}
+
 @theme {
   --animate-correct-card: correct-glow 0.5s forwards;
   --animate-incorrect-card: incorrect-cards 0.5s;
