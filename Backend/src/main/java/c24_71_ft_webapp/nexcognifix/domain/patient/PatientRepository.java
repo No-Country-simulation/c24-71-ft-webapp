@@ -31,4 +31,6 @@ public interface PatientRepository  extends JpaRepository<Patient, UUID> {
     // Filtrar por nombre (búsqueda parcial) y status activo relacionados a un profesional
     @Query("SELECT p FROM Patient p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%')) AND p.professional.idProfessional = :professionalId AND p.status = TRUE")
     Page<Patient> findByNameContaining(@Param("name") String name, @Param("professionalId") UUID professionalId, Pageable pageable);
+
+    Optional<Patient> findByEmail(String email);
 }
