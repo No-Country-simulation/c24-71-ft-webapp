@@ -21,7 +21,8 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGIN_START" });
     try {
       const user = await api.post("/login", data);
-      dispatch({ type: "LOGIN_SUCCESS", payload: user });      
+      dispatch({ type: "LOGIN_SUCCESS", payload: user });
+      console.log(user)
       navigate("/dashboard");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response?.data?.error || "Error en el login" });
