@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Configuración de la instancia global de Axios
 const api = axios.create({
-  baseURL: "https://api.ejemplo.com", 
+  baseURL: "https://nexcognitive-api.onrender.com/api", 
   headers: {
     "Content-Type": "application/json",
   },
