@@ -33,4 +33,13 @@ public interface PatientRepository  extends JpaRepository<Patient, UUID> {
     Page<Patient> findByNameContaining(@Param("name") String name, @Param("professionalId") UUID professionalId, Pageable pageable);
 
     Optional<Patient> findByEmail(String email);
+
+    @Query("""
+        SELECT COUNT(p) 
+        FROM Patient p 
+        WHERE p.status = true
+        AND MONTH(p.createdAt) = MONTH(CURRENT_DATE) 
+        AND YEAR(p.createdAt) = YEAR(CURRENT_DATE)
+        """)
+    Integer countActivePatientsThisMonth();
 }
