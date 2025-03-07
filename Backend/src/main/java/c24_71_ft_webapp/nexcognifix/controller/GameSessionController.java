@@ -70,7 +70,7 @@ public class GameSessionController {
         return ResponseEntity.ok(gameResultDto);
     }
 
-
+    @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "Listar todas las partidas de un paciente", description = "Devuelve todas las sesiones de juego asociadas a un paciente específico.")
     @GetMapping("/patient/{patientId}")
     public ResponseEntity<Page<GameSessionDTO>>  getGameSessionsByPatient(
