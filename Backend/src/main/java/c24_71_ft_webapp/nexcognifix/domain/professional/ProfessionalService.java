@@ -29,7 +29,7 @@ public class ProfessionalService {
                     dataLoginProfessional.email(), dataLoginProfessional.password());
             var professionalAuthenticated = authenticationManager.authenticate(authToken);
             var JWTToken = tokenService.generateToken((Professional) professionalAuthenticated.getPrincipal());
-            return new DataJWTToken(JWTToken);
+            return new DataJWTToken(JWTToken, ifProfessional.getName());
         } else {
             throw new AppException("Las credenciales proporcionadas son incorrectas.", "UNAUTHORIZED");
         }
