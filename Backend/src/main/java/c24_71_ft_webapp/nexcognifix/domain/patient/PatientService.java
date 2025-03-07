@@ -28,7 +28,7 @@ public class PatientService {
 
     public Page<PatientDTO> getAllPatients(String dni, String name, Pageable pageable) {
 
-        Professional professional = authService.getAuthenticatedProfessional();
+        Professional professional = authService.getAuthenticatedUser();
 
         Page<Patient> patientsPage;
 
@@ -46,7 +46,7 @@ public class PatientService {
 
     public PatientDetailDTO getPatientById(UUID id) {
 
-        Professional professional = authService.getAuthenticatedProfessional();
+        Professional professional = authService.getAuthenticatedUser();
 
         Patient patient = patientRepository.findByIdPatientAndProfessional_IdProfessionalAndStatusTrue(id, professional.getIdProfessional())
                 .orElseThrow(() -> new AppException("Paciente no encontrado o no pertenece al profesional.", "NOT_FOUND"));
@@ -68,7 +68,7 @@ public class PatientService {
 
     public PatientDTO createPatient(PatientCreateDTO patientCreateDTO) {
 
-        Professional authenticatedProfessional = authService.getAuthenticatedProfessional();
+        Professional authenticatedProfessional = authService.getAuthenticatedUser();
 
         Patient patient = new Patient(
                 patientCreateDTO.dni(),
@@ -86,7 +86,7 @@ public class PatientService {
     @Transactional
     public PatientDTO updatePatient(UUID id, PatientUpdateDTO patientUpdateDTO) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new AppException("Paciente no encontrado o no pertenece al profesional.", "NOT_FOUND"));
+                .orElseThrow(() -> new AppException("Paciente no encontrado", "NOT_FOUND"));
 
         patient.updatePatient(
                 patientUpdateDTO.name(),
@@ -103,7 +103,7 @@ public class PatientService {
     @Transactional
     public void deletePatient(UUID id) {
         Patient patient = patientRepository.findById(id)
-            .orElseThrow(() -> new AppException("Paciente no encontrado o no pertenece al profesional.", "NOT_FOUND"));
+            .orElseThrow(() -> new AppException("Paciente no encontrado", "NOT_FOUND"));
         patient.disablePatient();
     }
 

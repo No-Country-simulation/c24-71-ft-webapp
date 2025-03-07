@@ -2,11 +2,16 @@ package c24_71_ft_webapp.nexcognifix.controller;
 
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.GameSessionService;
 import c24_71_ft_webapp.nexcognifix.domain.gamesession.dto.*;
+import c24_71_ft_webapp.nexcognifix.domain.patient.dto.PatientDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,6 +68,17 @@ public class GameSessionController {
     public ResponseEntity<GameSessionResultDTO> submitGameResults(@PathVariable UUID sessionId, @RequestBody @Valid GameSessionResultInputDTO resultDTO) {
         var gameResultDto = gameSessionService.submitGameResults(sessionId, resultDTO);
         return ResponseEntity.ok(gameResultDto);
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @Operation(summary = "Listar todas las partidas de un paciente", description = "Devuelve todas las sesiones de juego asociadas a un paciente específico.")
+    @GetMapping("/patient/{patientId}")
+    public ResponseEntity<Page<GameSessionDTO>>  getGameSessionsByPatient(
+            @PathVariable UUID patientId,
+            @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+
+        Page<GameSessionDTO> gamesSessionsPatients = gameSessionService.getAllGameSessionsByPatient(patientId, pageable);
+        return ResponseEntity.ok(gamesSessionsPatients);
     }
 
 

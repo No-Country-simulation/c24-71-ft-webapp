@@ -2,6 +2,7 @@ package c24_71_ft_webapp.nexcognifix.infrastructure.security;
 
 
 import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
+import c24_71_ft_webapp.nexcognifix.infrastructure.exception.AppException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -38,7 +39,7 @@ public class TokenService {
 
     public String getSubject(String token) {
         if (token == null) {
-            throw new RuntimeException("Token is null.");
+            throw new AppException("Token nulo o inválido", "UNAUTHORIZED");
         }
         DecodedJWT verifier = null;
         try {
@@ -53,7 +54,7 @@ public class TokenService {
             throw exception; // Propaga la excepción para manejo adecuado en el controlador.
         }
         if (verifier == null) {
-            throw new RuntimeException("Invalid verifier.");
+            throw new AppException("Verificación inválida.", "UNAUTHORIZED");
         }
         return verifier.getSubject();
     }

@@ -29,46 +29,27 @@ public class PatientValidationAspect {
     private final AuthService authService;
 
 
-//    // Middleware para validar si existen parametros en la base de datos como email, y dni.
-//    @Around("execution(* *..PatientService.createPatient(..)) && args(patientCreateDTO,..) || " +
-//            "execution(* *..PatientService.updatePatient(..)) && args(id, patientUpdateDTO,..)")
-//    public Object validateCreateOrUpdatePatient(ProceedingJoinPoint joinPoint) throws Throwable {
-//
-//        System.out.println("entro validacion de paciente");
-//
-//        Object[] args = joinPoint.getArgs();
-//        for (Object arg : args) {
-//            if (arg instanceof PatientCreateDTO dto) {
-//                validateDniAndEmail(dto.dni(), dto.email());
-//            } else if (arg instanceof PatientUpdateDTO dto) {
-//                validateDniAndEmail(null, dto.email());
-//            }
-//        }
-//
-//        return joinPoint.proceed();
-//    }
+    // Middleware para validar parametro de ID `updatePatient`, `createPatientById`
+    @Around("execution(* *..PatientService.createPatient(..)) && args(patientCreateDTO,..)")
+    public Object validateCreatePatient(ProceedingJoinPoint joinPoint, PatientCreateDTO patientCreateDTO) throws Throwable {
 
-
-    @Around("execution(* c24_71_ft_webapp.nexcognifix.domain.patient.*.*(..))")
-    public Object validateDniAndEmail(ProceedingJoinPoint joinPoint) throws Throwable {
-        Object[] args = joinPoint.getArgs();
-
-        for (Object arg : args) {
-            if (arg instanceof PatientCreateDTO dto) {
-                validateDniAndEmail(dto.dni(), dto.email());
-            } else if (arg instanceof PatientUpdateDTO dto) {
-                System.out.println("Entra a validar update");
-                validateDniAndEmail(null, dto.email());
-            }
-        }
+        validateDniAndEmailForCreate(patientCreateDTO.dni(), patientCreateDTO.email());
 
         return joinPoint.proceed();
     }
 
+    // Middleware para validar parametro de ID e email `updatePatient`
+    @Around("execution(* *..PatientService.updatePatient(..)) && args(id, patientUpdateDTO,..)")
+    public Object validateUpdatePatient(ProceedingJoinPoint joinPoint, UUID id, PatientUpdateDTO patientUpdateDTO) throws Throwable {
 
-    // Middleware para validar parametro de ID `updatePatient`, `getPatientById` y `deletePatient`
+            validatePatientExistsAndBelongsToProfessional(id);
+            validateEmailForUpdate(id, patientUpdateDTO.email());
+
+        return joinPoint.proceed();
+    }
+
+    // Middleware para validar parametro de ID `getPatientById` y `deletePatient`
     @Around("execution(* *..PatientService.getPatientById(..)) && args(id,..) || " +
-            "execution(* *..PatientService.updatePatient(..)) && args(id,..) || " +
             "execution(* *..PatientService.deletePatient(..)) && args(id,..)")
     public Object validateParamsIDPatient(ProceedingJoinPoint joinPoint, UUID id) throws Throwable {
 
@@ -77,14 +58,24 @@ public class PatientValidationAspect {
     }
 
 
-    // Función para validar si existe DNI o Email
-    private void validateDniAndEmail(Long dni, String email) {
+    // Validación de `DNI` y `Email` para `createPatient()`
+    private void validateDniAndEmailForCreate(Long dni, String email) {
         if (dni != null && patientRepository.existsByDni(dni)) {
             throw new AppException("El DNI ya existe.", "CONFLICT");
         }
         if (email != null && patientRepository.existsByEmail(email)) {
-            System.out.println("valida email");
             throw new AppException("El Email ya existe.", "CONFLICT");
+        }
+    }
+
+   // Validación de `Email` para `updatePatient()`
+    private void validateEmailForUpdate(UUID id, String email) {
+        if (email != null) {
+            Optional<Patient> existingPatient = patientRepository.findByEmail(email);
+
+            if (existingPatient.isPresent() && !existingPatient.get().getIdPatient().equals(id)) {
+                throw new AppException("El Email ya está registrado en otro paciente.", "CONFLICT");
+            }
         }
     }
 
@@ -93,18 +84,13 @@ public class PatientValidationAspect {
         if (id == null) {
             throw new AppException("El ID del paciente no puede ser nulo.", "BAD_REQUEST");
         }
-
-        UUID professionalId = authService.getAuthenticatedProfessional().getIdProfessional();
+        UUID professionalId = authService.getAuthenticatedUser().getIdProfessional();
 
         Optional<Patient> patientOpt = patientRepository.findByIdPatientAndProfessional_IdProfessionalAndStatusTrue(id, professionalId);
         if (patientOpt.isEmpty()) {
-            throw new AppException("Paciente no encontrado o no pertenece al profesional.....", "NOT_FOUND");
+            throw new AppException("ID Paciente no encontrado", "NOT_FOUND");
         }
     }
-
-
-
-
 
 
 }
