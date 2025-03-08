@@ -4,18 +4,10 @@ import api from "../../api/axiosConfig";
 import GameStatusPanel from "./GameStatusPanel";
 import GameCard from "./GameCard";
 import GameResults from "./GameResults";
+import iconCards from "./IconCards";
 
 
-// Lista de emojis disponibles para el juego
-const emojis = [
-    "🌟", "🍎", "🏀", "🚗", "🎸",
-    "🐶", "🐱", "🦊", "🐸", "🦉",
-    "🌻", "🍕", "🍩", "🍉", "🍦",
-    "⚽", "🎲", "🎯", "🎭", "🎵",
-    "🚀", "✈️", "🚲", "⏰", "🔑"
-];
-
-function GameMechanics({ numberOfPairs, sessionId }) {
+function GameMechanics({ numberOfPairs, sessionId, isColorBlindMode }) {
 
     // Temporizador regresivo inicial de 5 segundos antes de iniciar el juego
     const countdownTimer = useGameTimer(5); 
@@ -24,7 +16,7 @@ function GameMechanics({ numberOfPairs, sessionId }) {
     
     // Selecciona aleatoriamente un número de pares de emojis y los duplica para formar las parejas
     const selectedEmojis = useMemo(() => {
-        const shuffled = [...emojis].sort(() => Math.random() - 0.5).slice(0, numberOfPairs);
+        const shuffled = [...iconCards].sort(() => Math.random() - 0.5).slice(0, numberOfPairs);
         return [...shuffled, ...shuffled].sort(() => Math.random() - 0.5);
     }, [numberOfPairs]);
 
@@ -139,6 +131,7 @@ function GameMechanics({ numberOfPairs, sessionId }) {
                         gameTimer={gameTimer}
                         matched={matched}
                         totalCards={selectedEmojis.length}
+                        isColorBlindMode={isColorBlindMode}
                     />
 
                     {/* Tablero de juego */}
@@ -154,6 +147,7 @@ function GameMechanics({ numberOfPairs, sessionId }) {
                             showAll={showAll}
                             onSelect={handleSelect}
                             numberOfPairs={numberOfPairs}
+                            isColorBlindMode={isColorBlindMode}
                         />
                     ))}
                     </div>
@@ -163,9 +157,9 @@ function GameMechanics({ numberOfPairs, sessionId }) {
             {/* Mensaje de carga mientras se envían los resultados */}
             {isSubmitting && (
                 <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
-                    <div className="text-center bg-white p-6 rounded-2xl shadow-lg">
-                        <div className="w-16 h-16 border-4 border-[#3E4B6A] border-dashed rounded-full animate-spin mx-auto"></div>
-                        <p className="mt-4 text-gray-800 text-lg font-semibold">Enviando resultados...</p>
+                    <div className={`text-center p-6 rounded-2xl shadow-lg ${isColorBlindMode ? 'bg-blind-secondary text-blind-primary' : 'bg-white text-gray-800'}`}>
+                        <div className={`w-16 h-16 border-4 border-dashed rounded-full animate-spin mx-auto ${isColorBlindMode ? 'border-blind-primary' : 'border-[#3E4B6A]'}`}></div>
+                        <p className="mt-4 text-lg font-semibold">Enviando resultados...</p>
                     </div>
                 </div>
             )}
@@ -173,10 +167,10 @@ function GameMechanics({ numberOfPairs, sessionId }) {
             {/* Muestra un mensaje de error si el envío de resultados falla */}
             {submissionError && (
                 <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
-                    <div className="bg-white shadow-lg rounded-lg p-6 max-w-lg w-full text-center border-3 border-red-400">
-                        <p className="text-red-600 text-lg font-semibold">{submissionError}</p>
+                    <div className={` shadow-lg rounded-lg p-6 max-w-lg w-full text-center border-3 ${isColorBlindMode ? 'bg-blind-secondary border-blind-border' : 'bg-white border-red-400'}`}>
+                        <p className={` text-lg font-semibold ${isColorBlindMode ? 'text-blind-primary' : 'text-red-600'}`}>{submissionError}</p>
                         <button 
-                            className="mt-4 bg-red-500 text-white px-6 py-2 rounded-lg text-lg font-semibold cursor-pointer shadow-md hover:bg-red-600 transition"
+                            className={`mt-4  px-6 py-2 rounded-lg text-lg font-semibold cursor-pointer shadow-md  transition ${isColorBlindMode ? 'bg-blind-accent text-blind-text hover:bg-blind-hover' : 'bg-red-500 text-white hover:bg-red-600'}`}
                             onClick={() =>{ setSubmissionError(null); sendGameData();}}
                         >
                             Reintentar
@@ -191,6 +185,7 @@ function GameMechanics({ numberOfPairs, sessionId }) {
                     attempts={attempts}
                     time={gameTimer.time}
                     isSubmitting={isSubmitting}
+                    isColorBlindMode={isColorBlindMode}
                 />
             )}
         </div>

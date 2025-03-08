@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-function GameCard({ index, emoji, isSelected, isMatched, isIncorrect, showAll, onSelect, numberOfPairs }) {
+function GameCard({ index, emoji, isSelected, isMatched, isIncorrect, showAll, onSelect, numberOfPairs, isColorBlindMode }) {
 
     const cardSize = useMemo(() => {
         const totalCards = numberOfPairs * 2;
@@ -20,11 +20,18 @@ function GameCard({ index, emoji, isSelected, isMatched, isIncorrect, showAll, o
             onClick={() => onSelect(index)}
         >
             {/* Lado frontal (emoji) */}
-            <div className={`absolute backface-hidden -rotate-x-180 w-full h-full bg-[#ECE5DD] flex justify-center items-center rounded-2xl border-2 border-[#4E5C82] ${isMatched ? 'border-[#ABDC6A]' : ''} ${isIncorrect ? 'border-[#c1c1c1]' : ''}`}>
-                {emoji}
+            <div
+                className={`absolute text-black backface-hidden p-5 -rotate-x-180 w-full h-full flex justify-center items-center rounded-2xl border-2
+                    ${isColorBlindMode ? 'border-blind-border bg-blind-accent' : 'border-[#4E5C82] bg-[#ECE5DD]'}
+                    ${isMatched ? (isColorBlindMode ? 'border-blind-hover shadow-[0_0_25px_#D08700]' : 'border-[#ABDC6A] shadow-[0_0_25px_#ABDC6A]') : ''}
+                    ${isIncorrect ? 'border-[#c1c1c1]' : ''}`}
+            >
+                {isColorBlindMode ? emoji.colorBlind : emoji.normal}
             </div>
             {/* Lado trasero (oculto) */}
-            <div className="absolute backface-hidden w-full h-full bg-[#4E5C82] flex justify-center items-center rounded-2xl border-2 border-[#4E5C82]">
+            <div className={`absolute backface-hidden w-full h-full flex justify-center items-center rounded-2xl border-2 
+                ${isColorBlindMode ? 'border-blind-secondary bg-blind-secondary' : 'border-[#4E5C82] bg-[#4E5C82]'}`}
+            >
                 ❔
             </div>
         </div>
