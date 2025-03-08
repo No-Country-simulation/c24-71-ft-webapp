@@ -32,11 +32,9 @@ export const AppRouter = () => {
     </Route>
 
     {/* Rutas de juego (públicas) */}
-    <Route path="game-sessions/patient/join/:sessionId" element={<PublicRoute />}>
-        <Route element={<LayoutGame />}>
-            <Route index element={<GameSessionJoin />} />           
-            <Route path="*" element={<NotFound />} />
-      </Route>
+    <Route path="game-sessions/patient/join/:sessionId" element={<LayoutGame />}>
+        <Route index element={<GameSessionJoin />} />
+        <Route path="*" element={<NotFound />} />
     </Route>
 
     {/* Rutas del Dashboard (privadas) */}
