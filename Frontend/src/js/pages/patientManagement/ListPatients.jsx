@@ -15,16 +15,6 @@ const ListPatients = () => {
         </div>
         <div className='row-start-2 col-start-2 border border-solid border-[#939191]'>
         <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
         </div>
         
     </div>
