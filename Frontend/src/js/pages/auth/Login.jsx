@@ -45,9 +45,8 @@ export const Login = () => {
                                 required
                                 {...register("email", { required: true })}
                             ></input>
-                            
-                                <p>{errors.email?.message}</p>
-                            
+
+                            <p>{errors.email?.message}</p>
                         </div>
                         <div className="p-4">
                             <label
