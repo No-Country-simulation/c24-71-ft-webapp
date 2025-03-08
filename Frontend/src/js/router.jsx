@@ -11,7 +11,7 @@ import PublicRoute from "./component/layout/PublicRoute"
 
 import { Home } from "./pages/home/Home"
 import { Login } from "./pages/auth/Login"
-import PatientManagement from "./pages/patientManagement/PatientManagement"
+import PatientManagement from "./pages/patientManagement/patientManagement"
 import { Register } from "./pages/auth/Register"
 import GameManagement from "./pages/gameManagement/gameManagement"
 import NotFound from "./pages/noFound/NotFound"
