@@ -10,7 +10,7 @@ import PrivateRoute from "./component/layout/PrivateRoute"
 import PublicRoute from "./component/layout/PublicRoute"
 
 import { Home } from "./pages/home/Home"
-import { Login } from "./pages/auth/login"
+import { Login } from "./pages/auth/Login"
 import PatientManagement from "./pages/patientManagement/PatientManagement"
 import { Register } from "./pages/auth/Register"
 import GameManagement from "./pages/gameManagement/gameManagement"
