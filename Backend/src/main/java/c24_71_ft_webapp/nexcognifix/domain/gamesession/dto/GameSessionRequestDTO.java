@@ -21,7 +21,7 @@ public record GameSessionRequestDTO(
 
         @NotNull(message = "El número de fichas de juego no puede ser nulo.")
         @Min(value = 10, message = "El número de fichas de juego debe ser al menos 10.")
-        @Max(value = 100, message = "El número de fichas de juego no puede superar 100.")
+        @Max(value = 50, message = "El número de fichas de juego no puede superar 50.")
         @EvenNumber(message = "El número de fichas de juego debe ser par.")
         Integer game_chips,
 

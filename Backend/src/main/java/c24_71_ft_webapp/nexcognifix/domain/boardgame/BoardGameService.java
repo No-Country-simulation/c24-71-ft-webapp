@@ -53,7 +53,8 @@ public class BoardGameService {
                 boardGame.getRules(),
                 boardGame.getCategory(),
                 boardGame.getType(),
-                boardGame.getStatus()
+                boardGame.getStatus(),
+                boardGame.getImageUrl()
         );
     }
 }

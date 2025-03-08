@@ -26,8 +26,8 @@ import java.util.List;
 @Configuration
 public class SecurityConfigurations {
 
-    @Value("${frontend.url:http://localhost:5173}")
-    private String frontendUrl;
+    @Value("${frontend.cors.url}")
+    private String frontendCors;
 
     @Autowired
     private SecurityFilter securityFilter;
@@ -84,7 +84,7 @@ public class SecurityConfigurations {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Collections.singletonList(frontendUrl));
+        configuration.setAllowedOriginPatterns(Collections.singletonList(frontendCors));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

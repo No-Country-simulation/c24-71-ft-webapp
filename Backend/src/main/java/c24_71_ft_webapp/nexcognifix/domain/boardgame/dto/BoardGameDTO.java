@@ -13,5 +13,6 @@ public record BoardGameDTO(
         String rules,
         GameCategory category,
         GameType type,
-        Boolean status
+        Boolean status,
+        String imageUrl
 ) { }
