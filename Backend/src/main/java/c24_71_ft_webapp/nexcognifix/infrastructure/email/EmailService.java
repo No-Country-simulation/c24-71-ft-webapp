@@ -28,7 +28,7 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
-    @Value("${frontend.url:http://localhost:5173}")
+    @Value("${frontend.redirect.url}")
     private String frontendUrl;
 
     @Value("${spring.mail.username}")
@@ -37,7 +37,7 @@ public class EmailService {
 
     // Envía un correo de sesión de juego.
     public void sendGameSessionEmail(GameSession gameSession) {
-        String gameSessionUrl = frontendUrl + "/game-session/" + gameSession.getIdSession();
+        String gameSessionUrl = frontendUrl + "/game-sessions/patient/join/" + gameSession.getIdSession();
 
         // Convertir reglas en una lista HTML
         String gameRulesList = convertRulesToHtmlList(gameSession.getBoardGame().getRules());
@@ -59,7 +59,7 @@ public class EmailService {
     // Envía un correo con el resultado de un juego.
     public void sendGameResultEmail(GameSession gameSession) {
 
-        String gameSessionUrl = frontendUrl + "/game-result/" + gameSession.getIdSession();
+        String gameSessionUrl = frontendUrl + "/dashboard/patients";
 
         String emailContent = loadTemplate("game_result_email.html")
                 .replace("{RESULTS_URL}", gameSessionUrl)

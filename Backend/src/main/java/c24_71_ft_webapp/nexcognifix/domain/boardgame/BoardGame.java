@@ -48,6 +48,9 @@ public class BoardGame {
     @Column(name = "status", nullable = false)
     private Boolean status = true;
 
+    @Column(name = "image_url", nullable = false)
+    private String imageUrl;
+
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;

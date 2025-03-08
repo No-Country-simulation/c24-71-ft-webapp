@@ -10,6 +10,7 @@ import c24_71_ft_webapp.nexcognifix.domain.patient.PatientRepository;
 import c24_71_ft_webapp.nexcognifix.domain.professional.Professional;
 import c24_71_ft_webapp.nexcognifix.infrastructure.email.EmailService;
 import c24_71_ft_webapp.nexcognifix.infrastructure.exception.AppException;
+import c24_71_ft_webapp.nexcognifix.infrastructure.security.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class GameSessionService {
 
+    private final AuthService authService;
     private final BoardGameRepository boardGameRepository;
     private final GameSessionRepository gameSessionRepository;
     private final PatientRepository patientRepository;
@@ -157,17 +159,9 @@ public class GameSessionService {
         );
     }
 
-
-    // TODO: Esta función debería trasladarse a un servicio común o helper,
-    // ya que se usa en diferentes servicios. Se encuentra aquí provisionalmente.
+    // Obtiene el profesional autenticado
     public Professional getAuthenticatedUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication.getPrincipal() instanceof Professional) {
-            return (Professional) authentication.getPrincipal();
-        }
-
-        throw new AppException("El usuario autenticado no es válido.", "FORBIDDEN");
+        return authService.getAuthenticatedUser();
     }
 
     public Page<GameSessionDTO> getAllGameSessionsByPatient(UUID patientId, Pageable pageable) {
