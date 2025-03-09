@@ -22,8 +22,8 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const user = JSON.parse(localStorage.getItem("user"));  //cambiar teniendo en cuenta como se guarda el token en localstorage
-    if (user?.token) {
-      config.headers.Authorization = `Bearer ${user.token}`;
+    if (user?.data.JWTToken) {
+      config.headers.Authorization = `Bearer ${user.data.JWTToken}`;
     }
     return config;
   },

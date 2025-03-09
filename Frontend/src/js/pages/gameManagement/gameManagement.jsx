@@ -3,6 +3,7 @@ import "../../../styles/App.css";
 import Modal from "../../component/Modal";
 import { useNavigate, Link } from "react-router";
 import api from "../../api/axiosConfig";
+import { formatCategory } from "../../utils/generalUtils";
 
 const GameManagement = () => {
     const [data, setData] = useState(null);
@@ -14,12 +15,13 @@ const GameManagement = () => {
     const listOfGames = async () => {
         try {
             const response = await api.get(`/board-games`);
-            if (!response.ok) {
-                throw new Error("Error al obtener los datos");
-            }
-            const result = await response.json();
-            console.log(result);
-            setData(result);
+            // console.log(response)
+            // if (!response.ok) {
+            //     throw new Error("Error al obtener los datos");
+            // }
+            // const result = await response.json();
+            // console.log(result);
+            setData(response.data);
         } catch (error) {
             setError(
                 error.response?.data?.error || "No se pudo cargar los juegos"
@@ -28,38 +30,43 @@ const GameManagement = () => {
             setLoading(false);
         }
     };
-    console.log(error)
-    console.log(listOfGames())
+     
+    console.log(data)
 
-    const games = [
-        {
-            name: "Juego de Memoria",
-            imageUrl:
-                "https://img.freepik.com/vector-gratis/tarjetas-juego-memoria-acuarela_23-2150149082.jpg?t=st=1741012500~exp=1741016100~hmac=e2443cd59d7297ce37a571d1f353ad54c8c4d0544e989e55a9365c6d10030d5b&w=900",
-            description:
-                "Juego de memoria para diagnosticar enfermedades y medir parametros",
-        },
-        // Other games
-        {
-            name: "Juego de Cartas",
-            imageUrl:
-                "https://phantom-telva.unidadeditorial.es/143ecf09966a7d87c251d4507e6535a5/resize/656/f/webp/assets/multimedia/imagenes/2021/08/12/16287613194864.jpg",
-            description: "Juego de Cartas para aprender",
-        },
-        {
-            name: "Rompecabezas",
-            imageUrl:
-                "https://previews.123rf.com/images/corbendallas/corbendallas1812/corbendallas181200106/127216648-9-piezas-de-rompecabezas-de-colores-jigsaw-rompecabezas-de-ilustraci%C3%B3n-vectorial-para-dise%C3%B1o-web.jpg",
-            description:
-                "Juego de Rompecabezas para ejercitar la capacidad de conectar ideas",
-        },
-    ];
+    useEffect(() => {
+      listOfGames()
+    }, []); 
+
+
+    // const games = [
+    //     {
+    //         name: "Juego de Memoria",
+    //         imageUrl:
+    //             "https://img.freepik.com/vector-gratis/tarjetas-juego-memoria-acuarela_23-2150149082.jpg?t=st=1741012500~exp=1741016100~hmac=e2443cd59d7297ce37a571d1f353ad54c8c4d0544e989e55a9365c6d10030d5b&w=900",
+    //         description:
+    //             "Juego de memoria para diagnosticar enfermedades y medir parametros",
+    //     },
+    //     // Other games
+    //     {
+    //         name: "Juego de Cartas",
+    //         imageUrl:
+    //             "https://phantom-telva.unidadeditorial.es/143ecf09966a7d87c251d4507e6535a5/resize/656/f/webp/assets/multimedia/imagenes/2021/08/12/16287613194864.jpg",
+    //         description: "Juego de Cartas para aprender",
+    //     },
+    //     {
+    //         name: "Rompecabezas",
+    //         imageUrl:
+    //             "https://previews.123rf.com/images/corbendallas/corbendallas1812/corbendallas181200106/127216648-9-piezas-de-rompecabezas-de-colores-jigsaw-rompecabezas-de-ilustraci%C3%B3n-vectorial-para-dise%C3%B1o-web.jpg",
+    //         description:
+    //             "Juego de Rompecabezas para ejercitar la capacidad de conectar ideas",
+    //     },
+    // ];
 
     return (
         <div>
             <div className="text-black p-5 my-10 mx-auto grid gap-6 space-y-10 md:space-y-0 sm:gap-6 lg:grid-cols-3 w-full">
                 {/*Grid. Game menu will go here*/}
-                {games.map((game) => (
+                {data && data.map((game) => (
                     <div
                         key={game.name}
                         className="group h-96 w-96 [perspective:1000px]"
@@ -93,7 +100,7 @@ const GameManagement = () => {
                                 {game.name}
                             </h1>
                             <h1 className="md:my-6 text-2xl flex justify-center">
-                                Prueba Diagnostica
+                                 {formatCategory(game.category)}
                             </h1>
                             <div className="flex justify-center">
                                 <button
