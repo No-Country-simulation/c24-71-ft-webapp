@@ -13,5 +13,5 @@ createRoot(document.getElementById('root')).render(
         <PatientManagement />
       </App>
     </BrowserRouter>    
-  </StrictMode>,
+  </StrictMode>
 )

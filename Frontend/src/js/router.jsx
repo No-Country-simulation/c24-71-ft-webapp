@@ -5,17 +5,17 @@ import { Navigate, Route, Routes } from "react-router"
 
 import LayoutAuth from "./component/layout/LayoutAuth"
 import LayoutDashboard from "./component/layout/LayoutDashboard"
-import LayoutPlay from "./component/layout/LayoutPlay"
+import LayoutGame from "./component/layout/LayoutGame"
 import PrivateRoute from "./component/layout/PrivateRoute"
 import PublicRoute from "./component/layout/PublicRoute"
 
 import { Home } from "./pages/home/Home"
-import { Login } from "./pages/auth/login"
-import PatientManagement from "./pages/patientManagement/PatientManagement"
-import { PlayGame } from "./pages/play/PlayGame"
+import { Login } from "./pages/auth/Login"
+import PatientManagement from "./pages/patientManagement/patientManagement"
 import { Register } from "./pages/auth/Register"
 import GameManagement from "./pages/gameManagement/gameManagement"
 import NotFound from "./pages/noFound/NotFound"
+import GameSessionJoin from "./pages/gameSessionJoin/GameSessionJoin"
 
 
 export const AppRouter = () => {
@@ -32,11 +32,9 @@ export const AppRouter = () => {
     </Route>
 
     {/* Rutas de juego (públicas) */}
-    <Route path="game-sessions/patient/join/:sessionId" element={<PublicRoute />}>
-        <Route element={<LayoutPlay />}>
-            <Route index element={<PlayGame />} />           
-            <Route path="*" element={<NotFound />} />
-      </Route>
+    <Route path="game-sessions/patient/join/:sessionId" element={<LayoutGame />}>
+        <Route index element={<GameSessionJoin />} />
+        <Route path="*" element={<NotFound />} />
     </Route>
 
     {/* Rutas del Dashboard (privadas) */}
