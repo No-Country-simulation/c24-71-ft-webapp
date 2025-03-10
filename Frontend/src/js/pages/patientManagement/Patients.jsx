@@ -13,7 +13,6 @@ const Patients = () => {
     {dni: "12.345.678", name: "Mariana Vazquez", age: "65", email: "mariana@gmail.com" },
     {dni: "12.345.678", name: "Mariana Vazquez", age: "65", email: "mariana@gmail.com" },
     {dni: "12.345.678", name: "Mariana Vazquez", age: "65", email: "mariana@gmail.com" },
-    {dni: "12.345.678", name: "Mariana Vazquez", age: "65", email: "mariana@gmail.com" },
     {dni: "12.345.678", name: "Mariana Vazquez", age: "65", email: "mariana@gmail.com" }
   ]
 
