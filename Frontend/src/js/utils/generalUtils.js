@@ -1,3 +1,3 @@
 export const formatCategory = (string) => {
-    return console.log(string)
+    return string.replace('_', ' ').toLowerCase()
 };

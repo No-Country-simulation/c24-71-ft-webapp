@@ -4,69 +4,114 @@ import Modal from "../../component/Modal";
 import { useNavigate, Link } from "react-router";
 import api from "../../api/axiosConfig";
 import { formatCategory } from "../../utils/generalUtils";
+import { useForm } from "react-hook-form";
+import SearchBarPatient from "../../component/SearchBarPatient.jsx";
 
 const GameManagement = () => {
-    const [data, setData] = useState(null);
+    const [dataGame, setDataGame] = useState(null);
+    const [dataPatient, setDataPatient] = useState([])
+    const [selectedItem, setSelectedPatient] = useState(null)
+    const [selectedGame, setSelectedGame] = useState(null)
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // To open an close de "Asign Game" Modal
     const [open, setOpen] = useState(false);
+    
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        setValue,
+        
+    } = useForm();
+    
 
+    // Get the list of games from the API
     const listOfGames = async () => {
         try {
             const response = await api.get(`/board-games`);
-            // console.log(response)
-            // if (!response.ok) {
-            //     throw new Error("Error al obtener los datos");
-            // }
-            // const result = await response.json();
-            // console.log(result);
-            setData(response.data);
+            setDataGame(response.data);
         } catch (error) {
             setError(
-                error.response?.data?.error || "No se pudo cargar los juegos"
+                error.response?.dataGame?.error || "No se pudo cargar los juegos"
             );
         } finally {
             setLoading(false);
         }
     };
-     
-    console.log(data)
 
+    // Get the patient list from the API and handle the search. Returns an Array.
+
+    const handleSearchPatientList = async (patientName) => {
+        try{
+            const response = await api.get(`/patients`)
+            console.log(response.data.content)
+            const resultFilter = response.data.content.filter((patient) => {
+                return patientName && patient && patient.name && patient.name.toLowerCase().includes(patientName)
+            });
+            console.log(resultFilter)
+            setDataPatient(resultFilter)
+        } catch (error) {
+            setError(error.response?.dataGame?.error || "No se pudo cargar la lista de pacientes")
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Post the game data to the API
+
+    // const sendGameDataToApi = async (dataGameCreation) => {
+    //     try {
+    //         const response = await api.post('/game-sessions/create', dataGameCreation)
+    //         console.log(response)
+    //     } catch (error) {
+    //         setError(error.response?.dataGame?.error) || "No se pudo enviar los datos a la API"
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    // };
+
+    // console.log(dataGame)
+    // console.log(dataPatient?.['0'])
+
+    // Handle to select the game ID from the Data fetched from the API
+
+    const handleSelectGame = (game) => {
+        setOpen(true)
+        setSelectedGame(game)
+        setValue("gameId", game)
+    }
+
+    // Handle to click and select a patient based from the Array got at handleSearchPatientList(). PatiendId field modifified in DataGameCreation
+
+    const handlePatientClick = (item) => {
+        setSelectedPatient(item); // Almacenar el elemento seleccionado en el estado
+        setValue("patientId", item); // Registrar el valor seleccionado en el formulario
+      };
+
+    // Function to collect and submit the data to the API
+
+    const onSubmit = (dataGameCreation) => {
+        console.log(dataGameCreation)
+
+    };
+
+    console.log(dataPatient)
+    
+    
     useEffect(() => {
       listOfGames()
-    }, []); 
+    //   patientList()
+    }, []);
 
-
-    // const games = [
-    //     {
-    //         name: "Juego de Memoria",
-    //         imageUrl:
-    //             "https://img.freepik.com/vector-gratis/tarjetas-juego-memoria-acuarela_23-2150149082.jpg?t=st=1741012500~exp=1741016100~hmac=e2443cd59d7297ce37a571d1f353ad54c8c4d0544e989e55a9365c6d10030d5b&w=900",
-    //         description:
-    //             "Juego de memoria para diagnosticar enfermedades y medir parametros",
-    //     },
-    //     // Other games
-    //     {
-    //         name: "Juego de Cartas",
-    //         imageUrl:
-    //             "https://phantom-telva.unidadeditorial.es/143ecf09966a7d87c251d4507e6535a5/resize/656/f/webp/assets/multimedia/imagenes/2021/08/12/16287613194864.jpg",
-    //         description: "Juego de Cartas para aprender",
-    //     },
-    //     {
-    //         name: "Rompecabezas",
-    //         imageUrl:
-    //             "https://previews.123rf.com/images/corbendallas/corbendallas1812/corbendallas181200106/127216648-9-piezas-de-rompecabezas-de-colores-jigsaw-rompecabezas-de-ilustraci%C3%B3n-vectorial-para-dise%C3%B1o-web.jpg",
-    //         description:
-    //             "Juego de Rompecabezas para ejercitar la capacidad de conectar ideas",
-    //     },
-    // ];
-
+    
     return (
         <div>
             <div className="text-black p-5 my-10 mx-auto grid gap-6 space-y-10 md:space-y-0 sm:gap-6 lg:grid-cols-3 w-full">
                 {/*Grid. Game menu will go here*/}
-                {data && data.map((game) => (
+                {dataGame && dataGame.map((game) => (
                     <div
                         key={game.name}
                         className="group h-96 w-96 [perspective:1000px]"
@@ -103,12 +148,15 @@ const GameManagement = () => {
                                  {formatCategory(game.category)}
                             </h1>
                             <div className="flex justify-center">
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                 <button
                                     className="my-2 bg-[#4E5C82] hover:bg-red-700 text-white font-bold py-2 px-4 w-auto rounded-full inline-flex items-center"
-                                    onClick={() => setOpen(true)}
-                                >
+                                    onClick={() => handleSelectGame(game.id)}
+                                >  
+                                <input type="hidden" {...register("gameId")}></input>
                                     <span>Asignar juego</span>
                                 </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -119,6 +167,7 @@ const GameManagement = () => {
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="bg-[#4E5C82] text-center h-144 w-144 text-white">
                     <h1>MEMOTEST</h1>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid gap-6 mb-6 md:grid-cols-2 mx-auto my-8 w-auto">
                         <div>
                             <label
@@ -127,13 +176,14 @@ const GameManagement = () => {
                             >
                                 Pacientes
                             </label>
-                            <input
-                                type="text"
-                                id="first_name"
-                                className="text-sm rounded-lg w-full p-2.5 bg-white text-black"
-                                placeholder="Juan Herrera"
-                                required
-                            ></input>
+                            <SearchBarPatient onSearchPatient={handleSearchPatientList}></SearchBarPatient>
+                            <input type="hidden" {...register("patientId")} />
+                            <h2>Resultados de búsqueda:</h2>
+                            <ul>
+                            {dataPatient.map((item) => (
+                            <li key={item.id} onClick={() => handlePatientClick(item.idPatient)}>{item.name}</li>
+                                ))}
+                            </ul>
                         </div>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 text-white">
@@ -144,6 +194,7 @@ const GameManagement = () => {
                                 className="text-sm rounded-lg w-full p-2.5 bg-white text-black"
                                 placeholder="30 segundos"
                                 required
+                                {...register('estimated_time', {required: true})}
                             ></input>
                         </div>
                         <div>
@@ -155,6 +206,7 @@ const GameManagement = () => {
                                 className="text-sm rounded-lg w-full p-2.5 bg-white text-black"
                                 placeholder="10"
                                 required
+                                {...register('game_chips', {required: true})}
                             ></input>
                         </div>
                         <div>
@@ -166,6 +218,7 @@ const GameManagement = () => {
                                 className="text-sm rounded-lg w-full p-2.5 bg-white text-black"
                                 placeholder="5"
                                 required
+                                {...register('estimated_attempts', {required: true})}
                             ></input>
                         </div>
                     </div>
@@ -178,6 +231,7 @@ const GameManagement = () => {
                             Asignar
                         </button>
                     </div>
+                    </form>
                 </div>
             </Modal>
         </div>

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 export const Login = () => {
     const { login, loading, error } = useAuth();
@@ -17,7 +18,12 @@ export const Login = () => {
 
     const onSubmit = (data) => {
         login(data);
+        console.log('funciona el boton')
     };
+
+    // useEffect(()=>{
+
+    // }, [])
 
     return (
         <>
