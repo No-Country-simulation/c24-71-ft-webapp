@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SearchBar = ({ onSearchPatient }) => {
+const SearchBarPatient = ({ onSearchPatient }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Manejar cambios en el campo de búsqueda
@@ -28,4 +28,4 @@ const SearchBar = ({ onSearchPatient }) => {
   );
 };
 
-export default SearchBar;
+export default SearchBarPatient;
