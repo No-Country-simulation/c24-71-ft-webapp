@@ -31,20 +31,38 @@
 
 .login {
   perspective: 800px;
-  width: 500px;
+  width: 355px;
   height: 499px;
   border-radius: 10px;
   margin: 103px;
   margin-right: 70px;
   margin-left: 20px;
-  /* background-color: #4E5C82; */
 
 }
 
-.botonlogin {
+@theme {
+  --animate-correct-card: correct-glow 0.5s forwards;
+  --animate-incorrect-card: incorrect-cards 0.5s;
 
-    
-  color: #ffffff;
-  background: #000000;
+  --color-blind-primary: #FFD700;
+  --color-blind-accent: #FACC15;
+  --color-blind-hover: #D08700;
+  --color-blind-secondary: #5A5A5A;
+  --color-blind-text: #2D2D2D;
+  --color-blind-border: #FFD700;
+  --color-blind-background: #1E2939;
+}
 
+@keyframes correct-glow {
+  0% { transform: scale(1) rotateX(180deg); }
+  50% { transform: scale(1.1) rotateX(180deg); }
+  100% { transform: scale(1) rotateX(180deg); }
+}
+
+
+@keyframes incorrect-cards {
+  10%, 90% { transform: translateX(-0.5px) rotateX(180deg); box-shadow: 0 0 5px gray;}
+  20%, 80% { transform: translateX(1px) rotateX(180deg); box-shadow: 0 0 15px gray;}
+  30%, 50%, 70% { transform: translateX(-2px) rotateX(180deg); box-shadow: 0 0 5px gray;}
+  40%, 60% { transform: translateX(2px) rotateX(180deg); box-shadow: 0 0 5px gray;}
 }

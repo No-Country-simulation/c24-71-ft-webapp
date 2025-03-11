@@ -13,8 +13,8 @@ const NavBar = () => {
 
 
   return (
-    <div className='nav-bar'>
-      <div className='up-bar bg-[#ECE5DE] flex justify-between h-[88px] max-w-[2500px] mx-auto items-center px-14'>
+    <div className='nav-bar relative w-full'>
+      <div className='up-bar bg-[#ECE5DE] flex justify-between h-[88px] w-full max-w-[2500px] mx-auto items-center px-14'>
         <h1 className='title text-[#3F4B6E] text-3xl font-bold'>NEXCOGNITIVE</h1>
         <div className='flex gap-12'>
           <div className='notifications'>

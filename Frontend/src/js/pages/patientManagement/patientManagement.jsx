@@ -1,7 +1,17 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../component/Navbar.jsx";
+import SideBar from "../../component/SideBar.jsx";
+import SearchPatient from "./SearchPatient.jsx";
+import AddPatient from "./AddPatient.jsx";
+import ListPatients from "./ListPatients.jsx";
 
-export const PatientManagement = () => {
+const PatientManagement = () => {
   return (
-    <div>patientManagement</div>
-  )
-}
+    <div>
+      <SearchPatient />
+      <ListPatients />
+    </div>
+  );
+};
+
+export default PatientManagement;
