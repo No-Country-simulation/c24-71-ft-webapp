@@ -8,7 +8,7 @@ Este repositorio contiene las pruebas funcionales realizadas en Postman para la 
 
 - 📌 Colección de Pruebas en Postman (NexCognitive.postman_collection.json) – Incluye todas las pruebas funcionales organizadas por módulos.
 - 📌 Documentación de la API ([Functional testing NexCognitive](https://documenter.getpostman.com/view/42791288/2sAYk8wPhA)) – Documentación generada desde Postman con ejemplos de uso.
-- 📌 Documentación de casos de prueba (Documentación casos de pruebas NexCognitive.pdf)
+- 📌 Documentación de casos de prueba ([Documentación casos de pruebas NexCognitive.pdf](https://drive.google.com/file/d/1TRMniJk3nQDjcNKwYkx4IPRVpytWaBtO/view?usp=drive_link))
 - 📌 README (README.md) – Esta documentación con instrucciones detalladas.
 
 ## Instalación y Uso
