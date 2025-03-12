@@ -35,11 +35,24 @@ public interface PatientRepository  extends JpaRepository<Patient, UUID> {
     Optional<Patient> findByEmail(String email);
 
     @Query("""
-        SELECT COUNT(p) 
-        FROM Patient p 
+        SELECT COUNT(p)
+        FROM Patient p
         WHERE p.status = true
-        AND MONTH(p.createdAt) = MONTH(CURRENT_DATE) 
+        AND MONTH(p.createdAt) = MONTH(CURRENT_DATE)
         AND YEAR(p.createdAt) = YEAR(CURRENT_DATE)
+        AND p.professional.idProfessional = :professionalId
         """)
-    Integer countActivePatientsThisMonth();
+    Integer countActivePatientsThisMonth(@Param("professionalId") UUID professionalId);
+
+
+    @Query("""
+        SELECT COUNT(p)
+        FROM Patient p
+        WHERE p.status = true
+        AND p.professional.idProfessional = :professionalId
+        """)
+    Long countActivePatients(@Param("professionalId") UUID professionalId);
+
 }
+
+
