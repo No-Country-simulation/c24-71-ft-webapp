@@ -6,12 +6,14 @@ import api from "../../api/axiosConfig";
 import { formatCategory } from "../../utils/generalUtils";
 import { useForm } from "react-hook-form";
 import SearchBarPatient from "../../component/SearchBarPatient.jsx";
+import { showLoadingToast, updateToastToSuccess, updateToastToError } from "../../utils/toastifyNotifications.js";
 
 const GameManagement = () => {
     const [dataGame, setDataGame] = useState(null);
     const [dataPatient, setDataPatient] = useState([])
     const [selectedItem, setSelectedPatient] = useState(null)
     const [selectedGame, setSelectedGame] = useState(null)
+    const [isListOpen, setIsListOpen] = useState(false)
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -30,13 +32,17 @@ const GameManagement = () => {
 
     // Get the list of games from the API
     const listOfGames = async () => {
+        let toastId;
+        toastId = showLoadingToast();
         try {
             const response = await api.get(`/board-games`);
+            updateToastToSuccess(toastId, "Juegos cargados!");
             setDataGame(response.data);
         } catch (error) {
             setError(
-                error.response?.dataGame?.error || "No se pudo cargar los juegos"
+                error.response?.data?.error || "No se pudo cargar los juegos"
             );
+            updateToastToError(toastId, error.response?.data?.error);
         } finally {
             setLoading(false);
         }
@@ -47,34 +53,36 @@ const GameManagement = () => {
     const handleSearchPatientList = async (patientName) => {
         try{
             const response = await api.get(`/patients`)
-            console.log(response.data.content)
             const resultFilter = response.data.content.filter((patient) => {
                 return patientName && patient && patient.name && patient.name.toLowerCase().includes(patientName)
             });
-            console.log(resultFilter)
+            setIsListOpen(true)
             setDataPatient(resultFilter)
         } catch (error) {
-            setError(error.response?.dataGame?.error || "No se pudo cargar la lista de pacientes")
+            setError(error.response?.data?.error || "No se pudo cargar la lista de pacientes")
         } finally {
             setLoading(false);
         }
     }
 
-    // Post the game data to the API
+    //Post the game data to the API
 
-    // const sendGameDataToApi = async (dataGameCreation) => {
-    //     try {
-    //         const response = await api.post('/game-sessions/create', dataGameCreation)
-    //         console.log(response)
-    //     } catch (error) {
-    //         setError(error.response?.dataGame?.error) || "No se pudo enviar los datos a la API"
-    //     } finally {
-    //         setLoading(false)
-    //     }
-    // };
+    const sendGameDataToApi = async (dataGameCreation) => {
+        let toastId;
+        toastId = showLoadingToast();
+        try {
+            const response = await api.post('/game-sessions/create', dataGameCreation)
+            updateToastToSuccess(toastId, "Sesion creada!");
+            setOpen(false)
+            console.log(response)
+        } catch (error) {
+            setError(error.response?.data?.error) || "No se pudo enviar los datos a la API"
+            updateToastToError(toastId, error.response?.data?.error);
+        } finally {
+            setLoading(false)
+        }
+    };
 
-    // console.log(dataGame)
-    // console.log(dataPatient?.['0'])
 
     // Handle to select the game ID from the Data fetched from the API
 
@@ -89,21 +97,18 @@ const GameManagement = () => {
     const handlePatientClick = (item) => {
         setSelectedPatient(item); // Almacenar el elemento seleccionado en el estado
         setValue("patientId", item); // Registrar el valor seleccionado en el formulario
+        setIsListOpen(false)
       };
 
     // Function to collect and submit the data to the API
 
     const onSubmit = (dataGameCreation) => {
         console.log(dataGameCreation)
-
+        sendGameDataToApi(dataGameCreation)
     };
 
-    console.log(dataPatient)
-    
-    
     useEffect(() => {
       listOfGames()
-    //   patientList()
     }, []);
 
     
@@ -148,15 +153,15 @@ const GameManagement = () => {
                                  {formatCategory(game.category)}
                             </h1>
                             <div className="flex justify-center">
-                                <form onSubmit={handleSubmit(onSubmit)}>
+                                < >
                                 <button
                                     className="my-2 bg-[#4E5C82] hover:bg-red-700 text-white font-bold py-2 px-4 w-auto rounded-full inline-flex items-center"
                                     onClick={() => handleSelectGame(game.id)}
                                 >  
-                                <input type="hidden" {...register("gameId")}></input>
+                                
                                     <span>Asignar juego</span>
                                 </button>
-                                </form>
+                                </>
                             </div>
                         </div>
                     </div>
@@ -168,6 +173,9 @@ const GameManagement = () => {
                 <div className="bg-[#4E5C82] text-center h-144 w-144 text-white">
                     <h1>MEMOTEST</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
+
+                    <input type="hidden" {...register("gameId")}></input>
+                    
                     <div className="grid gap-6 mb-6 md:grid-cols-2 mx-auto my-8 w-auto">
                         <div>
                             <label
@@ -178,12 +186,14 @@ const GameManagement = () => {
                             </label>
                             <SearchBarPatient onSearchPatient={handleSearchPatientList}></SearchBarPatient>
                             <input type="hidden" {...register("patientId")} />
-                            <h2>Resultados de búsqueda:</h2>
-                            <ul>
+                            
+                            {isListOpen && dataPatient.length > 0 && (
+                            <ul className="text-black absolute z-10 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg">
                             {dataPatient.map((item) => (
-                            <li key={item.id} onClick={() => handlePatientClick(item.idPatient)}>{item.name}</li>
+                            <li key={item.id} onClick={() => handlePatientClick(item.idPatient)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer transition-colors">{item.name}</li>
                                 ))}
                             </ul>
+                            )}
                         </div>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 text-white">
@@ -226,7 +236,8 @@ const GameManagement = () => {
                     <div className="flex gap-4 text-white">
                         <button
                             className="border-2 border-white bg-#4E5C82 hover:bg-blue-700 rounded-xl w-full p-4"
-                            onClick={() => setOpen(false)}
+                            type = 'submit'
+                            
                         >
                             Asignar
                         </button>
