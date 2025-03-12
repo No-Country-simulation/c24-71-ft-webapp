@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import api from "../api/axiosConfig";
 
+
 import { authReducer, initialState } from "./authReducer";
 
 export const AuthProvider = ({ children }) => {
@@ -23,6 +24,7 @@ export const AuthProvider = ({ children }) => {
       const user = await api.post("/login", data);
       dispatch({ type: "LOGIN_SUCCESS", payload: user });
       console.log(user)
+
       navigate("/dashboard");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response?.data?.error || "Error en el login" });
