@@ -1,5 +1,5 @@
 
-# 🧠 NexCognifive
+# 🧠 NexCognitive
 ![Portada](./Frontend/public/screenshots/cover.png)
 
 
@@ -44,9 +44,9 @@
 
 ## 📝 Descripción
 
-**NexCognifive** es una aplicación web diseñada para apoyar a los profesionales de la salud en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita evaluar y reforzar habilidades cognitivas de manera personalizada.
+**NexCognitive** es una aplicación web diseñada para apoyar a los profesionales de la salud en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita evaluar y reforzar habilidades cognitivas de manera personalizada.
 
-Actualmente, muchos especialistas carecen de recursos digitales adecuados para monitorear el progreso cognitivo de sus pacientes. **NexCognifive** resuelve esta necesidad al permitir la asignación de sesiones de juego adaptadas, el seguimiento del desempeño y la recepción de notificaciones sobre sus resultados.
+Actualmente, muchos especialistas carecen de recursos digitales adecuados para monitorear el progreso cognitivo de sus pacientes. **NexCognitive** resuelve esta necesidad al permitir la asignación de sesiones de juego adaptadas, el seguimiento del desempeño y la recepción de notificaciones sobre sus resultados.
 
 La aplicación incluye un juego de emparejamiento de fichas que registra el número de intentos, el tiempo empleado y la cantidad de fichas utilizadas en cada sesión. Además, cuenta con un modo de accesibilidad para daltónicos, que ajusta la paleta de colores para garantizar una experiencia inclusiva. La plataforma está diseñada para expandirse con nuevos juegos que estimulen distintas áreas cognitivas y brinden más opciones tanto para la rehabilitación como para el fortalecimiento cognitivo.
 
@@ -103,7 +103,7 @@ La aplicación web está desplegada y disponible para su uso. Puedes acceder a e
 
 Las instrucciones detalladas para la instalación del frontend se encuentran en el README dentro de la carpeta `Frontend`.  
 
-📄 [Ver instrucciones del Frotnend](./Frontend/README.md)  
+📄 [Ver instrucciones del Frontend](./Frontend/README.md)  
 
 ### 🛠️ Instalación del Backend
 
