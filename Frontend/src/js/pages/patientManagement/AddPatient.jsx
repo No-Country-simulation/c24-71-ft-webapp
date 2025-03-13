@@ -109,6 +109,7 @@ const AddPatient = () => {
                                 name="email"
                                 value={values.email}
                                 placeholder="joseperez@gmail.com"
+                                required
                                 onChange={handleOnChange}
                                 className="bg-[#EEEEEE] col-start-4 max-w-[200px] h-[40px] p-2 placeholder-[#939191] text-[#616060]"
                             />

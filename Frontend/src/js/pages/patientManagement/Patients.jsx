@@ -11,11 +11,9 @@ const Patients = () => {
   //Catch Patients data from api
   const patientsData = async () => {
     try{
-      const response = await api.get('/api/patients');
-      console.log("Respuesta de la API:", response);
-      setData(response.data);
+      const response = await api.get('/patients');
+      setData(response.data.content);
     } catch (error){
-      console.error("Error al obtener datos:", error)
       setError(error.response?.data?.error ?? "Hubo un error al cargar la lista de pacientes.");
     } finally {
     setLoading(false);
@@ -29,18 +27,25 @@ const Patients = () => {
 
   return (
     <div className='w-full '>
-      {/* {patientsData.map((patient, index) => (
+      {data.map((patient, index) => (
       <div key={index} className={`bg-[#F7F7F7] h-[44px] border-solid border-[#939191] ${index === 0 ? "border-t-0" : "border-t"} content-center`}>
-        <ul className='grid grid-cols-[1fr_1.5fr_0.5fr_1.5fr_0.2fr] text-start text-[#4E5C82] text-xl font-normal px-10'>
+        <ul className='grid grid-cols-[1fr_1.2fr_1.6fr_1.4fr_0.2fr] text-start text-[#4E5C82] text-xl font-normal px-10'>
           <li>{patient.dni}</li>
-          <li>{patient.name}</li>
-          <li className='text-start'>{patient.age}</li>
-          <li>{patient.email}</li>
-          <li className='flex justify-center pr-4 items-center'><MdEdit color='#2D3147'/></li>
+          <li className='pl-8'>{patient.name}</li>
+          {/* <li className='text-start'>{patient.age}</li> */}
+          <li className='pl-8'>{patient.email}</li>
+          <li className='flex justify-center'>
+            <select name='state'>
+              <option value='pendiente'>Pendiente</option>
+              <option value='enCurso'>En curso</option>
+              <option value='finalizado'>Finalizado</option>
+            </select>
+          </li>
+          <li className='flex justify-center items-center pr-6'><MdEdit color='#2D3147'/></li>
         </ul>
       </div>
       )
-      )} */}
+      )}
     </div>
   )
 }
