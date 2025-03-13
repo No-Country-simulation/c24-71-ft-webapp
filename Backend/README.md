@@ -1,4 +1,4 @@
-# 🧠 NexCognifive - Backend
+# 🧠 NexCognitive - Backend
 ![Portada](../Frontend/public/screenshots/cover.png)
 
 <div align="center">
@@ -34,7 +34,7 @@
 
 ## 📝 Descripción
 
-El backend de **NexCognifive** es una API REST desarrollada con Spring Boot, encargada de gestionar la lógica de negocio de la plataforma. Su principal función es proporcionar autenticación segura para profesionales, permitiéndoles administrar pacientes, asignar juegos cognitivos y realizar un seguimiento detallado del desempeño a través de estadísticas avanzadas.
+El backend de **NexCognitive** es una API REST desarrollada con Spring Boot, encargada de gestionar la lógica de negocio de la plataforma. Su principal función es proporcionar autenticación segura para profesionales, permitiéndoles administrar pacientes, asignar juegos cognitivos y realizar un seguimiento detallado del desempeño a través de estadísticas avanzadas.
 
 La API proporciona endpoints seguros mediante JWT (JSON Web Tokens) y Spring Security, asegurando un acceso controlado y protegido a la información. Además, integra un sistema de notificaciones por correo electrónico para alertar a los profesionales sobre los resultados de sus pacientes. También se cuenta con documentación interactiva mediante Swagger, facilitando la exploración y prueba de los endpoints disponibles.
 

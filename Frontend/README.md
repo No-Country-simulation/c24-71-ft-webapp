@@ -1,4 +1,4 @@
-# 🧠 NexCognifive - Frontend
+# 🧠 NexCognitive - Frontend
 ![Portada](../Frontend/public/screenshots/cover.png)
 
 <div align="center">
@@ -26,11 +26,11 @@
 
 ## 📝 Descripción
 
-El frontend de **NexCognifive** es una aplicación web desarrollada con React y Tailwind CSS, diseñada para que los profesionales de la salud gestionen a sus pacientes y les asignen sesiones de juego para la estimulación cognitiva.
+El frontend de **NexCognitive** es una aplicación web desarrollada con React y Tailwind CSS, diseñada para que los profesionales de la salud gestionen a sus pacientes y les asignen sesiones de juego para la estimulación cognitiva.
 
 La plataforma facilita la asignación de juegos interactivos, el seguimiento del desempeño de los pacientes y la visualización de estadísticas detalladas. Además, incluye un **modo daltónico** que ajusta la paleta de colores para mejorar la experiencia de los pacientes con deficiencias en la percepción del color.
 
-La aplicación está diseñada para integrarse con el backend de NexCognifive, utilizando una API REST segura con autenticación mediante JWT.
+La aplicación está diseñada para integrarse con el backend de **NexCognitive**, utilizando una API REST segura con autenticación mediante JWT.
 
 
 ## ✨ Características
