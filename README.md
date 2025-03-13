@@ -162,8 +162,8 @@ Consulta la documentación específica de cada módulo para obtener más informa
 
 - 🖥️ **Frontend**: [Documentación del Frontend](./Frontend/README.md)
 - 🛠️ **Backend**: [Documentación del Backend](./Backend/README.md)
-- 🎨 **UX/UI**: [Documentación del UX/UI](./UX-UI/README.md)
-- 🧪 **QA**: [Documentación del Backend](./QA/README.md)
+- 🎨 **UX/UI**: [Documentación de UX/UI](./UX-UI/README.md)
+- 🧪 **QA**: [Documentación de QA](./QA/README.md)
 
 
 ## 📸 Capturas de Pantalla
