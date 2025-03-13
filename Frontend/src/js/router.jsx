@@ -17,7 +17,6 @@ import GameManagement from "./pages/gameManagement/gameManagement"
 import NotFound from "./pages/noFound/NotFound"
 import GameSessionJoin from "./pages/gameSessionJoin/GameSessionJoin"
 
-
 export const AppRouter = () => {
   return (
     <Routes>

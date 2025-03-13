@@ -2,6 +2,8 @@ import { useReducer, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import api from "../api/axiosConfig";
+import { showLoadingToast, updateToastToSuccess, updateToastToError } from "../utils/toastifyNotifications";
+  
 
 
 import { authReducer, initialState } from "./authReducer";
@@ -19,15 +21,23 @@ export const AuthProvider = ({ children }) => {
   }, [state.user]);
 
   const login =  async (data) => {
+    let toastId;
+
     dispatch({ type: "LOGIN_START" });
     try {
+
+      toastId = showLoadingToast();
+
       const user = await api.post("/login", data);
       dispatch({ type: "LOGIN_SUCCESS", payload: user });
       console.log(user)
 
+      updateToastToSuccess(toastId, "Login exitoso!");
+      
       navigate("/dashboard");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response?.data?.error || "Error en el login" });
+      updateToastToError(toastId, "Error en el login");
     }
   };
 
