@@ -3,27 +3,18 @@ import Patients from './Patients';
 
 const ListPatients = () => {
   return (
-    <div className='grid grid-cols-[488px_1300px_150px] grid-rows-[1fr_30px_1fr] w-full'>
-				<div className='bar bg-[#EEEEEE] w-full max-w-[1253px] h-[68px] col-start-2 border-solid border-1 border-[#939191] mb-10 content-center'>
-          <ul className='text-[#3F4B6E] text-xl font-semibold flex justify-between px-10'>
+    <div className='grid grid-cols-[0.70fr_5.6fr_0.85fr] grid-rows-[1fr_4.5fr_1fr]'>
+				<div className='bar bg-[#EEEEEE] col-start-2 border-solid border-1 border-[#939191] mb-10 content-center'>
+          <ul className='grid grid-cols-[0.65fr_0.6fr_1.3fr_0.4fr_0.2fr] text-[#3F4B6E] text-xl font-semibold justify-between px-10'>
             <li>DNI</li>
             <li>Nombre y Apellido</li>
-            <li>Edad</li>
-            <li>Mail</li>
+            {/* <li className='text-center pr-2'>Edad</li> */}
+            <li className='text-center pr-60'>Mail</li>
+            <li>Estado</li>
             <li>Acciones</li>
           </ul>
         </div>
-        <div className='row-start-2 col-start-2'>
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
-        <Patients />
+        <div className='row-start-2 col-start-2 border border-solid border-[#939191]'>
         <Patients />
         </div>
         
