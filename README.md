@@ -321,6 +321,18 @@ git push origin be/auth
 
 <div align="center">
 
+<div align="center">
+
+### 🎨 UX/UI
+
+| **Victoria Savio** |
+| :-------- |
+| <img src="https://avatars.githubusercontent.com/u/199643459?v=4" width="120"> |
+| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victoria-l-savio-43147b173/)|
+| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vittosaa)| 
+
+</div>
+
 ### 🖥️ Frontend
 
 | **Christian Aránguiz** | **Romina Gonzalez** |
@@ -352,17 +364,5 @@ git push origin be/auth
 | <img src="https://avatars.githubusercontent.com/u/163934438?v=4" width="120"> |
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lina-parra-l/)|
 | [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LinapQA)| 
-
-</div>
-
-<div align="center">
-
-### 🎨 UX/UI
-
-| **Victoria Savio** |
-| :-------- |
-| <img src="https://avatars.githubusercontent.com/u/199643459?v=4" width="120"> |
-| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victoria-l-savio-43147b173/)|
-| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vittosaa)| 
 
 </div>
