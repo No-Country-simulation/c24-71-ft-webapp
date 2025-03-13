@@ -18,7 +18,7 @@ const GameManagement = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // To open an close de "Asign Game" Modal
+    // To open and close de "Asign Game" Modal
     const [open, setOpen] = useState(false);
     
     const {
@@ -26,6 +26,7 @@ const GameManagement = () => {
         formState: { errors },
         handleSubmit,
         setValue,
+        reset,
         
     } = useForm();
     
@@ -95,17 +96,40 @@ const GameManagement = () => {
     // Handle to click and select a patient based from the Array got at handleSearchPatientList(). PatiendId field modifified in DataGameCreation
 
     const handlePatientClick = (item) => {
+        console.log(item)
         setSelectedPatient(item); // Almacenar el elemento seleccionado en el estado
-        setValue("patientId", item); // Registrar el valor seleccionado en el formulario
-        setIsListOpen(false)
+        setValue("patientId", item.idPatient); // Registrar el valor seleccionado en el formulario
+        setIsListOpen(false) // Cerrar la lista después de seleccionar un paciente
       };
 
+      console.log(selectedItem)
     // Function to collect and submit the data to the API
 
     const onSubmit = (dataGameCreation) => {
         console.log(dataGameCreation)
         sendGameDataToApi(dataGameCreation)
+
+        //Clean form fields
+        reset({
+            gameId: "",
+            patientId: "",
+            estimated_time: "",
+            game_chips: "",
+            estimated_attempts: "",
+        });
+
+        setSelectedPatient(null);
+        setDataPatient([]); // Limpiar los resultados de la búsqueda
+        setIsListOpen(false); // Ocultar la lista de resultados
+
     };
+
+    const handleCloseModal = () => {
+        setOpen(false); // Cerrar el modal
+        setDataPatient([]); // Limpiar los resultados de la búsqueda
+        setIsListOpen(false); // Ocultar la lista de resultados
+    };
+
 
     useEffect(() => {
       listOfGames()
@@ -169,9 +193,9 @@ const GameManagement = () => {
             </div>
 
             {/* Modal starts here */}
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal open={open} onClose={handleCloseModal}>
                 <div className="bg-[#4E5C82] text-center h-144 w-144 text-white">
-                    <h1>MEMOTEST</h1>
+                    <h1>NEXCOGNITIVE</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                     <input type="hidden" {...register("gameId")}></input>
@@ -184,13 +208,13 @@ const GameManagement = () => {
                             >
                                 Pacientes
                             </label>
-                            <SearchBarPatient onSearchPatient={handleSearchPatientList}></SearchBarPatient>
+                            <SearchBarPatient onSearchPatient={handleSearchPatientList} resetSearch={!open} displaySelectedName={selectedItem ? selectedItem.name : ""}></SearchBarPatient>
                             <input type="hidden" {...register("patientId")} />
                             
                             {isListOpen && dataPatient.length > 0 && (
                             <ul className="text-black absolute z-10 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg">
                             {dataPatient.map((item) => (
-                            <li key={item.id} onClick={() => handlePatientClick(item.idPatient)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer transition-colors">{item.name}</li>
+                            <li key={item.id} onClick={() => handlePatientClick(item)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer transition-colors">{item.name}</li>
                                 ))}
                             </ul>
                             )}

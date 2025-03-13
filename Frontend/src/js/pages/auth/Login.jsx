@@ -1,30 +1,29 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
     const { login, loading, error } = useAuth();
     const navigate = useNavigate();
+
+    const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
 
-    // const onLogin = () => {
-    //     login("User 1");
-    // };
-
     const onSubmit = (data) => {
         login(data);
         console.log('funciona el boton')
     };
-
-    // useEffect(()=>{
-
-    // }, [])
 
     return (
         <>
@@ -63,13 +62,16 @@ export const Login = () => {
                                 Contraseña
                             </label>
                             <input
-                                type="text"
+                                type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 className="text-sm rounded-lg w-full p-2.5 bg-white text-black"
                                 placeholder="Contraseña"
                                 required
                                 {...register("password", { required: true })}
                             ></input>
+                            <button type='button' onClick={togglePasswordVisibility} className="p-2 text-white rounded-r-md focus:outline-none">
+                                    {showPassword ? 'Ocultar' : 'Mostrar'}
+                                    </button>
                         </div>
                         <div className="p-4">
                             <button className="border-2 border-white bg-#4E5C82 hover:bg-blue-700 rounded w-full p-4">
