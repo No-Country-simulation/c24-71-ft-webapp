@@ -34,7 +34,7 @@ const AddPatient = () => {
         <div className="grid grid-cols-[0.7fr_0.8fr]">
             <button
                 onClick={() => setOpenPopUp(true)}
-                className="bg-[#4E5C82] w-full h-[69px] rounded-[8px] flex justify-center items-center hover:bg-[#65749e] transform active:translate-y-[2px] transition-all duration-300"
+                className="bg-[#4E5C82] w-full h-[69px] rounded-[8px] cursor-pointer flex justify-center items-center hover:bg-[#65749e] transform active:translate-y-[2px] transition-all duration-300"
             >
                 <MdPersonAdd size="33px" color="#ECE5DE" />
             </button>
