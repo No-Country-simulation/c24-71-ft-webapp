@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdNotifications } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
@@ -10,7 +10,17 @@ import { useAuth } from '../context/AuthContext';
 const NavBar = () => {
 
     const { logout } = useAuth();
+    const [username, setUsername] = useState('');
 
+    console.log(localStorage.getItem(['professionalName']));
+
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("professionalName");
+      if (storedUsername) {
+         setUsername(storedUsername)
+      }
+    },[]);
+  
 
   return (
     <div className='nav-bar relative w-full'>
