@@ -5,15 +5,13 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../styles/index.css'
-import { App } from './app'
-import PatientManagement from './pages/patientManagement/PatientManagement'
+import { App } from './App'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
     <ToastContainer />
       <App>
-        <PatientManagement />
       </App>
     </BrowserRouter>    
   </StrictMode>
