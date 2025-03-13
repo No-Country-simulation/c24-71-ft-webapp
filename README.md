@@ -2,17 +2,20 @@
 # 🧠 NexCognifive
 ![Portada](./Frontend/public/screenshots/cover.png)
 
-<img alt="Frontend" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
-<img alt="CSS" src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" />
-<img alt="Backend" src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
-<img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
-<img alt="REST API" src="https://img.shields.io/badge/-REST_API-4E9F3D?style=flat-square&logo=swagger&logoColor=white" />
-<img alt="API Documentation" src="https://img.shields.io/badge/-Swagger-1d59db?style=flat-square&logo=swagger&logoColor=white" />
-<img alt="JWT" src="https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white" />
-<img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
-<img alt="Testing" src="https://img.shields.io/badge/-Postman-FF6C37?style=flat-square&logo=postman&logoColor=white" />
-<img alt="Figma" src="https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white" />
-<img alt="Git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+
+<div align="center">
+  <img alt="Frontend" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
+  <img alt="CSS" src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" />
+  <img alt="Backend" src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
+  <img alt="REST API" src="https://img.shields.io/badge/-REST_API-4E9F3D?style=flat-square&logo=swagger&logoColor=white" />
+  <img alt="API Documentation" src="https://img.shields.io/badge/-Swagger-1d59db?style=flat-square&logo=swagger&logoColor=white" />
+  <img alt="JWT" src="https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white" />
+  <img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
+  <img alt="Testing" src="https://img.shields.io/badge/-Postman-FF6C37?style=flat-square&logo=postman&logoColor=white" />
+  <img alt="Figma" src="https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white" />
+  <img alt="Git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+</div>
 
 
 ## 📋 Índice
@@ -157,9 +160,9 @@ Las instrucciones detalladas para la instalación del backend se encuentran en e
 
 Consulta la documentación específica de cada módulo para obtener más información sobre la estructura, funcionalidades, diseño y pruebas del proyecto:
 
-- 🖥️ **Frontend**: [Documentación del Frontend](./frontend/README.md)
-- 🛠️ **Backend**: [Documentación del Backend](./backend/README.md)
-- 🎨 **UX/UI**: [Documentación del UX/UI](https://www.figma.com/design/BGXqB69WzXQ4HQqnFnFosi/No-country--Web?node-id=4-320&t=ysCttR7Y318ThCcV-1)
+- 🖥️ **Frontend**: [Documentación del Frontend](./Frontend/README.md)
+- 🛠️ **Backend**: [Documentación del Backend](./Backend/README.md)
+- 🎨 **UX/UI**: [Documentación del UX/UI](./UX-UI/README.md)
 - 🧪 **QA**: [Documentación del Backend](./QA/README.md)
 
 
@@ -322,7 +325,7 @@ git push origin be/auth
 
 | **Christian Aránguiz** | **Romina Gonzalez** |
 | :-------- |  :-------- |
-| <img src="https://avatars.githubusercontent.com/u/35212431" width="120"> | <img src="https://avatars.githubusercontent.com/u/119947932?v=4" width="120"> | 
+| <img src="https://avatars.githubusercontent.com/u/35212431" width="120"> | <img src="https://ca.slack-edge.com/T02KS88FB0E-U08CPKZ2USE-e2c153c7fd22-512" width="120"> | 
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/christian-aranguiz-a2b05a198/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rominagonzalezdesigner/)|  
 | [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NikoDemo96)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/orwen97)|
 
@@ -334,7 +337,7 @@ git push origin be/auth
 
 | **Hector Suarez** | **Jissy Merlano** | **Rosario Díaz** | **William Medina** |
 | :-------- |  :-------- |  :-------- |  :-------- |
-| <img src="https://avatars.githubusercontent.com/u/167598424?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/46304949?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/108200621?v=4" width="120"> | 
+| <img src="https://avatars.githubusercontent.com/u/167598424?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/46304949?v=4" width="120"> | <img src="https://ca.slack-edge.com/T02KS88FB0E-U08AY36SE5T-65387f7a0acc-512" width="120"> | 
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hector-suarez-001415242/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ing-jissy-merlano/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/madelrosariodiaz/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/william-medinaa/)|
 | [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TheHector2614)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jissykakin)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ChayChaio)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/william-medina)|
 

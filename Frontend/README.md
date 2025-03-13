@@ -1,11 +1,13 @@
 # 🧠 NexCognifive - Frontend
 ![Portada](../Frontend/public/screenshots/cover.png)
 
-<img alt="Frontend" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
-<img alt="CSS" src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" />
-<img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
-<img alt="Figma" src="https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white" />
-<img alt="Git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+<div align="center">
+   <img alt="Frontend" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
+   <img alt="CSS" src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" />
+   <img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
+   <img alt="Figma" src="https://img.shields.io/badge/-Figma-F24E1E?style=flat-square&logo=figma&logoColor=white" />
+   <img alt="Git" src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
+</div>
 
 
 ## 📋 Índice
@@ -219,7 +221,7 @@ Las rutas están organizadas en el componente `AppRouter`, que define los difere
 
 | **Christian Aránguiz** | **Jissy Merlano** | **Romina Gonzalez** |**William Medina** |
 | :-------- |  :-------- |  :-------- |  :-------- |
-| <img src="https://avatars.githubusercontent.com/u/35212431" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/119947932?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/108200621?v=4" width="120"> | 
+| <img src="https://avatars.githubusercontent.com/u/35212431" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://ca.slack-edge.com/T02KS88FB0E-U08CPKZ2USE-e2c153c7fd22-512" width="120"> | <img src="https://ca.slack-edge.com/T02KS88FB0E-U08AY36SE5T-65387f7a0acc-512" width="120"> | 
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/christian-aranguiz-a2b05a198/)|[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ing-jissy-merlano/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rominagonzalezdesigner/)|[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/william-medinaa/)|
 [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NikoDemo96)|[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jissykakin)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/orwen97)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/william-medina)|
 
