@@ -9,17 +9,9 @@ import { useAuth } from '../context/AuthContext';
 
 const NavBar = () => {
 
-    const { logout } = useAuth();
-    const [username, setUsername] = useState('');
+    const { user, logout } = useAuth();
 
-    console.log(localStorage.getItem(['professionalName']));
-
-    useEffect(() => {
-      const storedUsername = localStorage.getItem("professionalName");
-      if (storedUsername) {
-         setUsername(storedUsername)
-      }
-    },[]);
+           
   
 
   return (
@@ -32,9 +24,9 @@ const NavBar = () => {
           </div>
           <div className='profile-pic flex gap-3 items-center'>
             <BsPersonCircle color='#2D3147' size={22} />
-            <p className='text-[#2D3147] font-semibold text-[20px]'>Soledad</p>
+            <p className='text-[#2D3147] font-semibold text-[20px]'>{ user.data.professionalName }</p>
             <SlArrowDown color='#2D3147' size={14} />
-            <button onClick={logout} className='text-[#2D3147] font-semibold text-[20px]'>salir</button>
+            <button onClick={ logout } className='text-[#2D3147] font-semibold text-[20px]'>Salir</button>
           </div>
         </div>
       </div>
