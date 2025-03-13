@@ -27,6 +27,12 @@ const Patients = () => {
     patientsData();
   }, [])
 
+  //Add new Patient
+
+  const newPatients = (newPatient) => {
+    setData((prevData) => [...prevData, newPatient]);
+  }
+
   // Search
 
   const searcher = (event) => {
@@ -46,18 +52,20 @@ const Patients = () => {
         <MdSearch size='23px' />
       </div>
       <div className='col-start-5 row-start-2'>
-        <AddPatient /> {/*Add patient button / popup */}
+        <AddPatient addData={newPatients}/> {/*Add patient button / popup */}
     </div>
     </div>
     {/* Show Patients table */}
       <div className='grid grid-cols-[0.17fr_1.4fr_0.2fr]'>
       <table className='w-full col-start-2 border border-[#939191] border-collapse'>
         <thead className='bg-[#EEEEEE] border-b-4 border-gray-300 text-[#3F4B6E] text-xl'>
-          <th className='p-3 text-left font-semibold'>DNI</th>
-          <th className='p-3 text-left font-semibold'>Nombre y Apellido</th>
-          <th className='p-3 text-left font-semibold'>Edad</th>
-          <th className='p-3 text-left font-semibold'>Email</th>
-          <th className='p-3 text-left font-semibold'>Acciones</th>
+          <tr>
+            <th className='p-3 text-left font-semibold'>DNI</th>
+            <th className='p-3 text-left font-semibold'>Nombre y Apellido</th>
+            <th className='p-3 text-left font-semibold'>Edad</th>
+            <th className='p-3 text-left font-semibold'>Email</th>
+            <th className='p-3 text-left font-semibold'>Acciones</th>
+          </tr>
         </thead>
         {result.map((patient, index) => (
         <tbody key={index} className={`bg-[#f0f0f0] h-[44px]  border-solid border-[#939191] ${index === 0 ? "border-t-0" : "border-t"} content-center`}>
