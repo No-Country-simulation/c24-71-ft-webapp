@@ -2,17 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { MdPersonAdd } from "react-icons/md";
 import { FaRegWindowClose } from "react-icons/fa";
+import api from '../../api/axiosConfig.js';
 
-const AddPatient = () => {
+const AddPatient = ({ addData }) => {
     const [openPopUp, setOpenPopUp] = useState(false);
-
+    const [error, setError] = useState(null);
     const [values, setValues] = useState({
-        //Save form data
-        name: "",
-        dni: "",
-        age: "",
-        email: "",
-        diagnosis: "",
+    //Save form data
+    name: "",
+    dni: "",
+    age: "",
+    email: "",
+    diagnosis: "",
     });
 
     const handleOnChange = (event) => {
@@ -24,10 +25,22 @@ const AddPatient = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         //Handle form values
         event.preventDefault();
-        console.log(values);
+        try {
+          await addData(values);
+          setValues({
+            name: "",
+            dni: "",
+            age: "",
+            email: "",
+            diagnosis: "",
+            });
+            setOpenPopUp(false);            
+        } catch(error){
+          setError(error.response?.data?.error ?? "Error al enviar información.");
+        }
     };
 
     return (
