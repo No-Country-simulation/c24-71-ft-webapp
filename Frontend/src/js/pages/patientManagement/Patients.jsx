@@ -72,7 +72,7 @@ const Patients = () => {
           <tr className='text-[#4E5C82] text-xl'>
             <th className='p-3 text-left font-normal'>{patient.dni}</th>
             <th className='p-3 text-left font-normal'>{patient.name}</th>
-            <th className='p-3 text-left font-normal'>50</th>
+            <th className='p-3 text-left font-normal'>{patient.age}</th>
             <th className='p-3 text-left font-normal'>{patient.email}</th>
             <th className='p-3 flex gap-4 justify-start pl-6'>
             <MdEdit className='cursor-pointer' color='#2D3147'/>
