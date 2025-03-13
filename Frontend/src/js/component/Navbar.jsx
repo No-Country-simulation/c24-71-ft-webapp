@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdNotifications } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
@@ -9,8 +9,10 @@ import { useAuth } from '../context/AuthContext';
 
 const NavBar = () => {
 
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
 
+           
+  
 
   return (
     <div className='nav-bar relative w-full'>
@@ -22,9 +24,9 @@ const NavBar = () => {
           </div>
           <div className='profile-pic flex gap-3 items-center'>
             <BsPersonCircle color='#2D3147' size={22} />
-            <p className='text-[#2D3147] font-semibold text-[20px]'>Soledad</p>
+            <p className='text-[#2D3147] font-semibold text-[20px]'>{ user.data.professionalName }</p>
             <SlArrowDown color='#2D3147' size={14} />
-            <button onClick={logout} className='text-[#2D3147] font-semibold text-[20px]'>salir</button>
+            <button onClick={ logout } className='text-[#2D3147] font-semibold text-[20px]'>Salir</button>
           </div>
         </div>
       </div>
