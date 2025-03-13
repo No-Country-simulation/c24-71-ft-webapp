@@ -7,6 +7,7 @@ public record PatientDTO(
         Long dni,
         String name,
         String email,
+        Integer age,
         UUID professionalId
 ) {
 }

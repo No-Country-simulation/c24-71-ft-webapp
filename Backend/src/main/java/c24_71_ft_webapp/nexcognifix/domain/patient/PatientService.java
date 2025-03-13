@@ -114,6 +114,7 @@ public class PatientService {
                 patient.getDni(),
                 patient.getName(),
                 patient.getEmail(),
+                patient.getAge(),
                 patient.getProfessional().getIdProfessional()
         );
     }
