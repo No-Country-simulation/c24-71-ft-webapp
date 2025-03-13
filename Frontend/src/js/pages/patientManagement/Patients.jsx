@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { MdEdit } from "react-icons/md";
 import api from '../../api/axiosConfig.js';
+import { FaRegClipboard } from "react-icons/fa";
 
 const Patients = () => {
   const [data, setData] = useState([]);
@@ -29,19 +30,15 @@ const Patients = () => {
     <div className='w-full '>
       {data.map((patient, index) => (
       <div key={index} className={`bg-[#F7F7F7] h-[44px] border-solid border-[#939191] ${index === 0 ? "border-t-0" : "border-t"} content-center`}>
-        <ul className='grid grid-cols-[1fr_1.2fr_1.6fr_1.4fr_0.2fr] text-start text-[#4E5C82] text-xl font-normal px-10'>
+        <ul className='grid grid-cols-[1fr_1.2fr_0.45fr_1.6fr_0.2fr] text-start text-[#4E5C82] text-xl font-normal px-10'>
           <li>{patient.dni}</li>
-          <li className='pl-8'>{patient.name}</li>
-          {/* <li className='text-start'>{patient.age}</li> */}
+          <li className=''>{patient.name}</li>
+          <li>50</li>
           <li className='pl-8'>{patient.email}</li>
-          <li className='flex justify-center'>
-            <select name='state'>
-              <option value='pendiente'>Pendiente</option>
-              <option value='enCurso'>En curso</option>
-              <option value='finalizado'>Finalizado</option>
-            </select>
-          </li>
-          <li className='flex justify-center items-center pr-6'><MdEdit color='#2D3147'/></li>
+          <li className='flex justify-center items-center pr-4 gap-4'>
+            <MdEdit color='#2D3147'/>
+            <FaRegClipboard color='#2D3147'/>
+            </li>
         </ul>
       </div>
       )
