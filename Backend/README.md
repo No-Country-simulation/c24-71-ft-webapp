@@ -1,5 +1,5 @@
 # 🧠 NexCognitive - Backend
-![Portada](../Frontend/public/screenshots/cover.png)
+![Portada](../Frontend/public/screenshots/cover.jpeg)
 
 <div align="center">
     <img alt="Backend" src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />

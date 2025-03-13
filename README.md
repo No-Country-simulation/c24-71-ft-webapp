@@ -1,6 +1,6 @@
 
 # 🧠 NexCognitive
-![Portada](./Frontend/public/screenshots/cover.png)
+![Portada](./Frontend/public/screenshots/cover.jpeg)
 
 
 <div align="center">
@@ -44,7 +44,7 @@
 
 ## 📝 Descripción
 
-**NexCognitive** es una aplicación web diseñada para apoyar a los profesionales de la salud en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita evaluar y reforzar habilidades cognitivas de manera personalizada.
+**NexCognitive** es una aplicación web diseñada para apoyar a los profesionales, como psicólogos, educadores, médicos y otros especialistas, en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita  reforzar habilidades cognitivas de manera personalizada.
 
 Actualmente, muchos especialistas carecen de recursos digitales adecuados para monitorear el progreso cognitivo de sus pacientes. **NexCognitive** resuelve esta necesidad al permitir la asignación de sesiones de juego adaptadas, el seguimiento del desempeño y la recepción de notificaciones sobre sus resultados.
 
@@ -321,6 +321,18 @@ git push origin be/auth
 
 <div align="center">
 
+<div align="center">
+
+### 🎨 UX/UI
+
+| **Victoria Savio** |
+| :-------- |
+| <img src="https://avatars.githubusercontent.com/u/199643459?v=4" width="120"> |
+| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victoria-l-savio-43147b173/)|
+| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vittosaa)| 
+
+</div>
+
 ### 🖥️ Frontend
 
 | **Christian Aránguiz** | **Romina Gonzalez** |
@@ -352,17 +364,5 @@ git push origin be/auth
 | <img src="https://avatars.githubusercontent.com/u/163934438?v=4" width="120"> |
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lina-parra-l/)|
 | [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LinapQA)| 
-
-</div>
-
-<div align="center">
-
-### 🎨 UX/UI
-
-| **Victoria Savio** |
-| :-------- |
-| <img src="https://avatars.githubusercontent.com/u/199643459?v=4" width="120"> |
-| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victoria-l-savio-43147b173/)|
-| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Vittosaa)| 
 
 </div>
