@@ -1,5 +1,5 @@
 # 🧠 NexCognitive - Frontend
-![Portada](../Frontend/public/screenshots/cover.png)
+![Portada](../Frontend/public/screenshots/cover.jpeg)
 
 <div align="center">
    <img alt="Frontend" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
@@ -26,7 +26,7 @@
 
 ## 📝 Descripción
 
-El frontend de **NexCognitive** es una aplicación web desarrollada con React y Tailwind CSS, diseñada para que los profesionales de la salud gestionen a sus pacientes y les asignen sesiones de juego para la estimulación cognitiva.
+El frontend de **NexCognitive** es una aplicación web desarrollada con React y Tailwind CSS, diseñada para que los profesionales gestionen a sus pacientes y les asignen sesiones de juego para la estimulación cognitiva.
 
 La plataforma facilita la asignación de juegos interactivos, el seguimiento del desempeño de los pacientes y la visualización de estadísticas detalladas. Además, incluye un **modo daltónico** que ajusta la paleta de colores para mejorar la experiencia de los pacientes con deficiencias en la percepción del color.
 

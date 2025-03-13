@@ -1,6 +1,6 @@
 
 # 🧠 NexCognitive
-![Portada](./Frontend/public/screenshots/cover.png)
+![Portada](./Frontend/public/screenshots/cover.jpeg)
 
 
 <div align="center">
@@ -44,7 +44,7 @@
 
 ## 📝 Descripción
 
-**NexCognitive** es una aplicación web diseñada para apoyar a los profesionales de la salud en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita evaluar y reforzar habilidades cognitivas de manera personalizada.
+**NexCognitive** es una aplicación web diseñada para apoyar a los profesionales, como psicólogos, educadores, médicos y otros especialistas, en la estimulación cognitiva de sus pacientes mediante juegos interactivos. Su objetivo es ofrecer una herramienta accesible y eficiente que permita  reforzar habilidades cognitivas de manera personalizada.
 
 Actualmente, muchos especialistas carecen de recursos digitales adecuados para monitorear el progreso cognitivo de sus pacientes. **NexCognitive** resuelve esta necesidad al permitir la asignación de sesiones de juego adaptadas, el seguimiento del desempeño y la recepción de notificaciones sobre sus resultados.
 
