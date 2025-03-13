@@ -2,17 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { MdPersonAdd } from "react-icons/md";
 import { FaRegWindowClose } from "react-icons/fa";
+import api from '../../api/axiosConfig.js';
 
-const AddPatient = () => {
+const AddPatient = ({ addData }) => {
     const [openPopUp, setOpenPopUp] = useState(false);
-
+    const [error, setError] = useState(null);
     const [values, setValues] = useState({
-        //Save form data
-        name: "",
-        dni: "",
-        age: "",
-        email: "",
-        diagnosis: "",
+    //Save form data
+    name: "",
+    dni: "",
+    age: "",
+    email: "",
+    diagnosis: "",
     });
 
     const handleOnChange = (event) => {
@@ -24,17 +25,29 @@ const AddPatient = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         //Handle form values
         event.preventDefault();
-        console.log(values);
+        try {
+          await addData(values);
+          setValues({
+            name: "",
+            dni: "",
+            age: "",
+            email: "",
+            diagnosis: "",
+            });
+            setOpenPopUp(false);            
+        } catch(error){
+          setError(error.response?.data?.error ?? "Error al enviar información.");
+        }
     };
 
     return (
         <div className="grid grid-cols-[0.7fr_0.8fr]">
             <button
                 onClick={() => setOpenPopUp(true)}
-                className="bg-[#4E5C82] w-full h-[69px] rounded-[8px] flex justify-center items-center hover:bg-[#65749e] transform active:translate-y-[2px] transition-all duration-300"
+                className="bg-[#4E5C82] w-full h-[69px] rounded-[8px] cursor-pointer flex justify-center items-center hover:bg-[#65749e] transform active:translate-y-[2px] transition-all duration-300"
             >
                 <MdPersonAdd size="33px" color="#ECE5DE" />
             </button>
