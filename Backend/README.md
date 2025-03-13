@@ -1,13 +1,15 @@
 # 🧠 NexCognifive - Backend
 ![Portada](../Frontend/public/screenshots/cover.png)
 
-<img alt="Backend" src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
-<img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
-<img alt="REST API" src="https://img.shields.io/badge/-REST_API-4E9F3D?style=flat-square&logo=swagger&logoColor=white" />
-<img alt="API Documentation" src="https://img.shields.io/badge/-Swagger-1d59db?style=flat-square&logo=swagger&logoColor=white" />
-<img alt="JWT" src="https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white" />
-<img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
-<img alt="Testing" src="https://img.shields.io/badge/-Postman-FF6C37?style=flat-square&logo=postman&logoColor=white" />
+<div align="center">
+    <img alt="Backend" src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
+    <img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
+    <img alt="REST API" src="https://img.shields.io/badge/-REST_API-4E9F3D?style=flat-square&logo=swagger&logoColor=white" />
+    <img alt="API Documentation" src="https://img.shields.io/badge/-Swagger-1d59db?style=flat-square&logo=swagger&logoColor=white" />
+    <img alt="JWT" src="https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white" />
+    <img alt="Render" src="https://img.shields.io/badge/-Render-4C87C5?style=flat-square&logo=render&logoColor=white" />
+    <img alt="Testing" src="https://img.shields.io/badge/-Postman-FF6C37?style=flat-square&logo=postman&logoColor=white" />
+</div>
 
 ## 📋 Índice
 - [📝 Descripción](#-descripción)
@@ -334,7 +336,7 @@ Para mantener un código limpio y homogéneo, se deben seguir las siguientes con
 
 | **Hector Suarez** | **Jissy Merlano** | **Rosario Díaz** | **William Medina** |
 | :-------- |  :-------- |  :-------- |  :-------- |
-| <img src="https://avatars.githubusercontent.com/u/167598424?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/46304949?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/108200621?v=4" width="120"> | 
+| <img src="https://avatars.githubusercontent.com/u/167598424?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/94768676?v=4" width="120"> | <img src="https://avatars.githubusercontent.com/u/46304949?v=4" width="120"> | <img src="https://ca.slack-edge.com/T02KS88FB0E-U08AY36SE5T-65387f7a0acc-512" width="120"> | 
 | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hector-suarez-001415242/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ing-jissy-merlano/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/madelrosariodiaz/)| [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/william-medinaa/)|
 | [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TheHector2614)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jissykakin)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ChayChaio)| [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/william-medina)|
 
