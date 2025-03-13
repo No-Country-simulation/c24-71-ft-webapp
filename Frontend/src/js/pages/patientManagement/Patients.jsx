@@ -11,7 +11,8 @@ const Patients = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true)
-  //Catch Patients data from api
+  const [search, setSearch] = useState("");
+  //Connecting Patients data from api
   const patientsData = async () => {
     try{
       const response = await api.get('/patients');
@@ -26,16 +27,24 @@ const Patients = () => {
     patientsData();
   }, [])
 
-  console.log(data);
+  // Search
+
+  const searcher = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  }
+  //Search Filter
+  const result = !search ? data : data.filter((patient)=> patient.name.toLowerCase().includes(search.toLowerCase()));
+
 
   return (
     <div className='w-full'>
       {/* Searcher */}
     <div className='text-black grid grid-cols-[0.32fr_2fr_0.15fr_0.1fr_0.7fr_0fr] grid-rows-[1fr_1fr_1fr] w-full '>
-			<input type='search' placeholder='Buscar...' className='bg-[#EEEEEE] w-full h-[67px] col-start-2 row-start-2 col-span-1 border-solid first:border-r-0 border-1 border-[#A69487] shadow-[0_4px_4px_rgba(0,0,0,0.25)] px-4 focus:outline-none' />
-			<button className='bg-[#EEEEEE] w-full h-[67px] col-start-3 row-start-2 col-span-1 border-solid border-1 border-[#A69487] last:border-l-0 mr-1 shadow-[0_4px_4px_rgba(0,0,0,0.25)] cursor-pointer flex justify-center items-center hover:bg-[#e0e0e0] transform active:translate-y-[2px] transition-all duration-300'>
+			<input value={search} onChange={searcher} type='search' placeholder='Buscar...' className='bg-[#EEEEEE] w-full h-[67px] col-start-2 row-start-2 col-span-1 border-solid first:border-r-0 border-1 border-[#A69487] shadow-[0_4px_4px_rgba(0,0,0,0.25)] px-4 focus:outline-none' />
+			<div className='bg-[#EEEEEE] w-full h-[67px] col-start-3 row-start-2 col-span-1 border-solid border-1 border-[#A69487] last:border-l-0 mr-1 shadow-[0_4px_4px_rgba(0,0,0,0.25)] flex justify-center items-center'>
         <MdSearch size='23px' />
-      </button>
+      </div>
       <div className='col-start-5 row-start-2'>
         <AddPatient /> {/*Add patient button / popup */}
     </div>
@@ -50,7 +59,7 @@ const Patients = () => {
           <th className='p-3 text-left font-semibold'>Email</th>
           <th className='p-3 text-left font-semibold'>Acciones</th>
         </thead>
-        {data.map((patient, index) => (
+        {result.map((patient, index) => (
         <tbody key={index} className={`bg-[#f0f0f0] h-[44px]  border-solid border-[#939191] ${index === 0 ? "border-t-0" : "border-t"} content-center`}>
           <tr className='text-[#4E5C82] text-xl'>
             <th className='p-3 text-left font-normal'>{patient.dni}</th>
